@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .nav-item {
+        @apply flex flex-col items-center p-2 text-xs capitalize;
+    }
+}
