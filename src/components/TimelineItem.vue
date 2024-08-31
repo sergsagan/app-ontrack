@@ -1,6 +1,12 @@
 <script setup>
-import { XMarkIcon } from '@heroicons/vue/24/outline/index.js';
-const props = defineProps(['timelineItem']);
+import BaseSelect from '@/components/BaseSelect.vue'
+
+const props = defineProps({
+  timelineItem: {
+    type: Object,
+    required: true,
+  }
+});
 
 const hourLinkClasses = [
   'absolute -top-4 left-1/2 -translate-x-1/2 rounded px-2 font-mono text-lg',
@@ -13,6 +19,8 @@ const options = [
   { value: 2, label: 'Reading' },
   { value: 3, label: 'Training' }
 ]
+
+const selectedActivityId = 0
 </script>
 
 <template>
@@ -23,25 +31,11 @@ const options = [
     >
       {{ timelineItem.hour }}:00
     </a>
-    <div class="flex gap-2">
-      <button class="rounded bg-gray-100 p-3 enabled:hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50">
-        <XMarkIcon class="h-8" />
-      </button>
-      <select
-        name=""
-        id=""
-        class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
-      >
-        <option selected disabled value="">Rest</option>
-        <option
-          v-for="{ value, label } in options"
-          :key="value"
-          :value="value"
-        >
-          {{ label }}
-        </option>
-      </select>
-    </div>
+    <BaseSelect
+      :selected="selectedActivityId"
+      :options="options"
+      placeholder="Rest"
+    />
   </li>
 </template>
 
