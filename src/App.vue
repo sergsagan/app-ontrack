@@ -18,10 +18,7 @@ function goTo(page) {
 </script>
 
 <template>
-  <AppHeader
-    @go-to-timeline="goTo(PAGE_TIMELINE)"
-    @go-to-progress="goTo(PAGE_PROGRESS)"
-  />
+  <AppHeader  @navigate="goTo($event)" />
   <main class="flex flex-grow flex-col">
     <TimelinePage v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" />
     <ActivitiesPage v-show="currentPage === PAGE_ACTIVITIES" />
