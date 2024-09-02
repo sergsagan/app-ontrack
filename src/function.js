@@ -2,22 +2,26 @@ import { PAGE_TIMELINE, HOURS_IN_DAY, MIDNIGHT_HOUR } from '@/constans.js'
 import { isPageValid } from './validators.js'
 
 export function normalizePageHash() {
-  const page = window.location.hash.slice(1);
+  const page = window.location.hash.slice(1)
 
   if (isPageValid(page)) {
-    return page;
+    return page
   }
-  window.location.hash = PAGE_TIMELINE;
+  window.location.hash = PAGE_TIMELINE
 
-  return PAGE_TIMELINE;
+  return PAGE_TIMELINE
 }
 
 export function generateTimelineItems() {
-  const timelineItems = [];
+  const timelineItems = []
 
   for (let hour = MIDNIGHT_HOUR; hour < HOURS_IN_DAY; hour++) {
     timelineItems.push({ hour })
   }
 
-  return timelineItems;
+  return timelineItems
+}
+
+export function generateActivitySelectOptions(activities) {
+  return activities.map((label, value) => ({ label, value }))
 }
