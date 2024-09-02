@@ -1,4 +1,4 @@
-import { HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.js'
+import { BUTTON_TYPES, HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.js'
 
 export function isPageValid(page) {
   return Object.keys(NAV_ITEMS).includes(page)
@@ -37,6 +37,10 @@ export function isActivityValid(activity) {
 
 export function validateActivities(activities) {
   return activities.every(isActivityValid)
+}
+
+export function isButtonTypeValid(type) {
+  return BUTTON_TYPES.includes(type)
 }
 
 function isNumber(value) {
