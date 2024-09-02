@@ -1,5 +1,9 @@
 import { BUTTON_TYPES, HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.js'
 
+export function isUndefined(value) {
+  return value === undefined
+}
+
 export function isUndefinedOrNull(value) {
   return isUndefined(value) || isNull(value)
 }
@@ -50,10 +54,6 @@ function isString(value) {
 
 function isNull(value) {
   return value === null
-}
-
-function isUndefined(value) {
-  return value === undefined
 }
 
 function isBetween(value, start, end) {
