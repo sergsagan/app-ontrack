@@ -1,4 +1,5 @@
 <script setup>
+import { ref, nextTick } from 'vue'
 import BaseButton from './BaseButton.vue'
 import { BUTTON_TYPE_PRIMARY } from '@/constans.js'
 import { PlusIcon } from '@heroicons/vue/24/outline/index.js'
@@ -8,10 +9,16 @@ const emit = defineEmits({
   submit: isActivityValid
 })
 
-let activity = ''
+const activity = ref('')
 
-function submit() {
-  emit('submit', activity)
+async function submit() {
+  emit('submit', activity.value)
+
+  activity.value = ''
+
+  await nextTick()
+  window.scrollTo(0, document.body.scrollHeight)
+
 }
 </script>
 
@@ -21,18 +28,16 @@ function submit() {
     class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4"
   >
     <input
-      :value="activity"
-      @input="activity = $event.target.value"
+      v-model="activity"
       type="text"
       class="w-full rounded border px-4 text-xl"
       placeholder="Activity name"
     >
-    <BaseButton :type="BUTTON_TYPE_PRIMARY">
+    <BaseButton
+      :type="BUTTON_TYPE_PRIMARY"
+      :disabled="activity.trim() === ''"
+    >
       <PlusIcon class="h-8" />
     </BaseButton>
   </form>
 </template>
-
-<style scoped>
-
-</style>
