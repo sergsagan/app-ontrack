@@ -27,6 +27,10 @@ export function isNumberOrNull(value) {
   return isNumber(value) || isNull(value)
 }
 
+export function isHourValid(hour) {
+  return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
+}
+
 function isNumber(value) {
   return typeof value === 'number'
 }
@@ -41,10 +45,6 @@ function isNull(value) {
 
 function isUndefined(value) {
   return value === undefined
-}
-
-function isHourValid(hour) {
-  return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
 }
 
 function isBetween(value, start, end) {
