@@ -48,16 +48,20 @@ export function isButtonTypeValid(type) {
   return BUTTON_TYPES.includes(type)
 }
 
+export function isNull(value) {
+  return value === null
+}
+
+export function isSelectValueValid(value) {
+  return isNotEmptyString(value) || isNumberOrNull(value)
+}
+
 function isNumber(value) {
   return typeof value === 'number'
 }
 
 function isString(value) {
   return typeof value === 'string'
-}
-
-function isNull(value) {
-  return value === null
 }
 
 function isBetween(value, start, end) {

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
 import TimelinePage from '@/pages/TimelinePage.vue'
@@ -19,11 +19,11 @@ import {
   generateActivities,
 } from '@/function.js'
 
-const timelineItems = generateTimelineItems()
+const timelineItems = ref(generateTimelineItems())
 const currentPage = ref(normalizePageHash())
 const activities = ref(generateActivities())
 
-const activitySelectOptions = generateActivitySelectOptions(activities.value)
+const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 
 function goTo(page) {
   currentPage.value = page
@@ -34,7 +34,15 @@ function createActivity(activity) {
 }
 
 function deleteActivity(activity) {
+  timelineItems.value.forEach((timelineItem) => {
+    if (timelineItem.activityId === activity.id)
+      timelineItem.activityId = null
+  })
   activities.value.splice(activities.value.indexOf(activity), 1)
+}
+
+function setTimelineItemActivity({ timelineItem, activity }) {
+  timelineItem.activityId = activity?.id || null
 }
 
 </script>
@@ -45,7 +53,9 @@ function deleteActivity(activity) {
     <TimelinePage
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
+      :activities="activities"
       :activity-select-options="activitySelectOptions"
+      @set-timeline-item-activity="setTimelineItemActivity"
     />
     <ActivitiesPage
       v-show="currentPage === PAGE_ACTIVITIES"
