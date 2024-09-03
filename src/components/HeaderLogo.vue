@@ -6,7 +6,7 @@ import { PAGE_TIMELINE } from '@/constans.js'
   <a :href="`#${PAGE_TIMELINE}`">
     <img
       class="h-9"
-      src="@/assets/logo.png"
+      src="@/assets/img/logo.png"
       alt="Logo"
     >
   </a>
