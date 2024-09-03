@@ -28,8 +28,12 @@ export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
 }
 
-export function isActivityValid(activity) {
-  return isNotEmptyString(activity)
+export function isActivityValid({ id, name, secondsToComplete }) {
+  return [
+    isNotEmptyString(id),
+    isNotEmptyString(name),
+    isNumber(secondsToComplete)
+  ].every(Boolean)
 }
 
 export function validateActivities(activities) {
@@ -65,7 +69,7 @@ function isNotEmptyString(value) {
 }
 
 function isSelectOptionValid({ value, label }) {
-  return isNumber(value) && isNotEmptyString(label)
+  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
 

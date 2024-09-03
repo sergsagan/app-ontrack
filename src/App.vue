@@ -6,13 +6,22 @@ import TimelinePage from '@/pages/TimelinePage.vue'
 import ActivitiesPage from '@/pages/ActivitiesPage.vue'
 import ProgressPage from '@/pages/ProgressPage.vue'
 
-import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from './constans.js'
-import { normalizePageHash, generateTimelineItems, generateActivitySelectOptions } from '@/function.js'
+import {
+  PAGE_ACTIVITIES,
+  PAGE_PROGRESS,
+  PAGE_TIMELINE
+} from './constans.js'
+
+import {
+  normalizePageHash,
+  generateTimelineItems,
+  generateActivitySelectOptions,
+  generateActivities,
+} from '@/function.js'
 
 const timelineItems = generateTimelineItems()
 const currentPage = ref(normalizePageHash())
-
-const activities = ref(['Coding', 'Reading', 'Training'])
+const activities = ref(generateActivities())
 
 const activitySelectOptions = generateActivitySelectOptions(activities.value)
 

@@ -8,7 +8,7 @@ import { isActivityValid, isUndefined } from '@/validators.js'
 
 defineProps({
   activity: {
-    type: String,
+    type: Object,
     required: true,
     validator: isActivityValid
   }
@@ -30,7 +30,7 @@ const secondsToComplete = ref(null);
       >
         <TrashIcon class="h-8 text-white" />
       </BaseButton>
-      <span class="truncate text-xl">{{ activity }}</span>
+      <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
     <div>
       <BaseSelect
