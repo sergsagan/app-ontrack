@@ -29,6 +29,10 @@ export function validateSelectOptions(options) {
 }
 
 export function isActivityValid({ id, name, secondsToComplete }) {
+  if (isNull(id)) {
+    return true;
+  }
+
   return [
     isNotEmptyString(id),
     isNotEmptyString(name),
@@ -56,7 +60,7 @@ export function isSelectValueValid(value) {
   return isNotEmptyString(value) || isNumberOrNull(value)
 }
 
-function isNumber(value) {
+export function isNumber(value) {
   return typeof value === 'number'
 }
 
