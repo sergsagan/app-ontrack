@@ -5,7 +5,8 @@ import {
   SECONDS_IN_HOUR,
   RANDOM_HOUR,
   SECONDS_IN_MINUTE,
-  MINUTES_IN_HOUR
+  MINUTES_IN_HOUR,
+  MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
 import { isPageValid, isNull } from './validators.js'
 
@@ -42,11 +43,21 @@ export function generateTimelineItems() {
   for (let hour = MIDNIGHT_HOUR; hour < HOURS_IN_DAY; hour++) {
     timelineItems.push({
       hour,
-      activityId: null
+      activityId: null,
+      activitySeconds: 0
     })
   }
 
   return timelineItems
+}
+
+export function formatSeconds(seconds) {
+  const date = new Date()
+
+  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECONDS)
+  const utc = date.toUTCString()
+
+  return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
 export function generateActivitySelectOptions(activities) {
