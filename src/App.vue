@@ -63,6 +63,7 @@ function setActivitySecondsToComplete(activity, secondsToComplete) {
       :activities="activities"
       :activity-select-options="activitySelectOptions"
       @set-timeline-item-activity="setTimelineItemActivity"
+      :current-page="currentPage"
     />
     <ActivitiesPage
       v-show="currentPage === PAGE_ACTIVITIES"

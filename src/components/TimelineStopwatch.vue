@@ -8,7 +8,7 @@ import {
   BUTTON_TYPE_WARNING,
   MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
-import { isNumber } from '@/validators.js'
+import { isHourValid, isNumber } from '@/validators.js'
 import { formatSeconds } from '../function.js'
 
 const props = defineProps({
@@ -16,12 +16,19 @@ const props = defineProps({
     type: Number,
     default: 0,
     validator: isNumber
+  },
+  hour: {
+    type: Number,
+    required: true,
+    validator: isHourValid
   }
 })
 
 const seconds = ref(props.seconds)
 const isRunning = ref(false)
 let isInterval = null
+
+const isStartButtonDisabled = props.hour !== new Date().getHours()
 
 function start() {
   if (!isRunning.value) {
@@ -48,6 +55,7 @@ function reset() {
   <div class="flex w-full gap-2 items-center">
     <BaseButton
       :type="BUTTON_TYPE_DANGER"
+      :disabled="!seconds"
       @click="reset"
     >
       <ArrowPathIcon class="h-8 text-white" />
@@ -66,6 +74,7 @@ function reset() {
       v-else
       :type="BUTTON_TYPE_SUCCESS"
       @click="start"
+      :disabled="isStartButtonDisabled"
     >
       <PlayIcon class="h-8 text-white" />
     </BaseButton>
