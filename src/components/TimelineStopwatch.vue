@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import BaseButton from './BaseButton.vue'
 import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline/index.js'
 import {
@@ -8,38 +8,31 @@ import {
   BUTTON_TYPE_WARNING,
   MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
-import { isHourValid, isNumber } from '@/validators.js'
+import { isTimelineItemValid } from '@/validators.js'
 import { formatSeconds } from '../function.js'
 
 const props = defineProps({
-  seconds: {
-    type: Number,
-    default: 0,
-    validator: isNumber
-  },
-  hour: {
-    type: Number,
+  timelineItem: {
+    type: Object,
     required: true,
-    validator: isHourValid
+    validator: isTimelineItemValid
   }
 })
 
-const emit = defineEmits({
-  updateSeconds: isNumber
-})
+const updateTimelineItemActivitySeconds = inject('updateTimelineItemActivitySeconds')
 
-const seconds = ref(props.seconds)
+const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
 let isInterval = null
 
-const isStartButtonDisabled = props.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
 
 function start() {
   if (!isRunning.value) {
     isRunning.value = true
 
     isInterval = setInterval(() => {
-      emit('updateSeconds', 1)
+      updateTimelineItemActivitySeconds(props.timelineItem, 1)
       seconds.value++
     }, MILLISECONDS_IN_SECONDS)
   }
@@ -51,7 +44,7 @@ function stop() {
 }
 function reset() {
   stop()
-  emit('updateSeconds', -seconds.value)
+  updateTimelineItemActivitySeconds(props.timelineItem, -seconds.value)
   seconds.value = 0
 }
 

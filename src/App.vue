@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, provide, ref } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
 import TimelinePage from '@/pages/TimelinePage.vue'
@@ -17,6 +17,7 @@ import {
   generateTimelineItems,
   generateActivitySelectOptions,
   generateActivities,
+  generatePeriodSelectOptions
 } from '@/function.js'
 
 const currentPage = ref(normalizePageHash())
@@ -52,8 +53,8 @@ function deleteActivity(activity) {
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
-function setTimelineItemActivity(timelineItem, activity) {
-  timelineItem.activityId = activity.id
+function setTimelineItemActivity(timelineItem, activityId) {
+  timelineItem.activityId = activityId
 }
 
 function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
@@ -64,6 +65,15 @@ function setActivitySecondsToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }
 
+provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
+provide('timelineItems', timelineItems.value)
+provide('activitySelectOptions', activitySelectOptions)
+provide('periodSelectOptions', generatePeriodSelectOptions())
+provide('setTimelineItemActivity', setTimelineItemActivity)
+provide('setActivitySecondsToComplete', setActivitySecondsToComplete)
+provide('createActivity', createActivity)
+provide('deleteActivity', deleteActivity)
+
 </script>
 
 <template>
@@ -72,20 +82,12 @@ function setActivitySecondsToComplete(activity, secondsToComplete) {
     <TimelinePage
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
-      :activities="activities"
-      :activity-select-options="activitySelectOptions"
-      @set-timeline-item-activity="setTimelineItemActivity"
       :current-page="currentPage"
-      @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
       ref="timeline"
     />
     <ActivitiesPage
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
-      :timeline-items="timelineItems"
-      @create-activity="createActivity"
-      @delete-activity="deleteActivity"
-      @set-activity-seconds-to-complete="setActivitySecondsToComplete"
     />
     <ProgressPage v-show="currentPage === PAGE_PROGRESS" />
   </main>

@@ -66,7 +66,9 @@ export function generateActivitySelectOptions(activities) {
     ({ value: activity.id, label: activity.name }))
 }
 
-export function generatePeriodSelectOptions(periodsInMinutes) {
+export function generatePeriodSelectOptions() {
+  const periodsInMinutes = Array.from({length: 32}, (_, i) => (i + 1) * 15);
+
   return periodsInMinutes.map((periodsInMinutes) => ({
       value: periodsInMinutes * SECONDS_IN_MINUTE,
       label: generatePeriodSelectOptionsLabel(periodsInMinutes)
