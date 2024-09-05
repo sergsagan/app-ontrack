@@ -2,7 +2,7 @@
 import { nextTick, ref, watchPostEffect } from 'vue'
 import TimelineItem from '@/components/TimelineItem.vue'
 import {
-  isActivityValid, isPageValid,
+  isActivityValid, isNumber, isPageValid,
   isTimelineItemValid,
   validateActivities,
   validateSelectOptions,
@@ -37,6 +37,9 @@ const props = defineProps({
 const emit = defineEmits({
   setTimelineItemActivity(timelineItem, activity) {
     return [isTimelineItemValid(timelineItem), isActivityValid(activity)].every(Boolean)
+  },
+  updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
+    return [isTimelineItemValid(timelineItem), isNumber(activitySeconds)].every(Boolean)
   }
 })
 
@@ -73,7 +76,8 @@ function scrollToHour(hour = null, isSmooth = true) {
         :timeline-item="timelineItem"
         :activities="activities"
         :activity-select-options="activitySelectOptions"
-        @select-activity="emit('setTimelineItemActivity', { timelineItem, $event})"
+        @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
+        @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timelineItem, $event)"
         ref="timelineItemRefs"
         @scroll-to-hour="scrollToHour"
       />

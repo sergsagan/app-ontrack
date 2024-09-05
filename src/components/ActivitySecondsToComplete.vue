@@ -1,19 +1,36 @@
 <script setup>
-import { formatSeconds } from '@/function.js'
-import { isActivityValid } from '@/validators.js'
+import { computed } from 'vue'
+import { isActivityValid, validateTimelineItems } from '@/validators.js'
+import { formatSeconds, getTotalActivitySeconds } from '@/function.js'
 
-defineProps({
+const props = defineProps({
   activity: {
     type: Object,
     required: true,
     validator: isActivityValid
-  }
+  },
+  timelineItems: {
+    type: Array,
+    required: true,
+    validator: validateTimelineItems
+  },
 })
+
+const colorClasses = computed(() =>
+  secondsDiff.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
+)
+
+const seconds = computed(() => `${sign.value}${formatSeconds(secondsDiff.value)}`)
+
+const sign = computed(() => secondsDiff.value >= 0 ? '+' : '-')
+
+const secondsDiff = computed( () =>
+  getTotalActivitySeconds(props.activity, props.timelineItems) - props.activity.secondsToComplete)
 </script>
 
 <template>
-  <div class="flex items-center rounded bg-purple-100 px-2 font-mono text-xl text-purple-600">
-    {{ formatSeconds(activity.secondsToComplete) }}
+  <div :class="colorClasses" class="flex items-center rounded px-2 font-mono text-xl">
+    {{ seconds }}
   </div>
 </template>
 
