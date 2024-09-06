@@ -1,11 +1,13 @@
 <script setup>
 import { CheckCircleIcon } from '@heroicons/vue/24/solid/index.js';
 import { PAGE_PROGRESS } from '@/constans.js'
+import { navigate } from '@/router.js'
 </script>
 
 <template>
   <a
     :href="`#${PAGE_PROGRESS}`"
+    @click="navigate(PAGE_PROGRESS)"
     class="text-sm"
   >
     <div

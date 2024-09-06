@@ -13,30 +13,23 @@ import {
 } from './constans.js'
 
 import {
-  normalizePageHash,
   generateTimelineItems,
   generateActivitySelectOptions,
   generateActivities,
   generatePeriodSelectOptions
 } from '@/function.js'
 
-const currentPage = ref(normalizePageHash())
+import {
+  currentPage,
+  timelineRef
+} from '@/router.js'
+
+
 const activities = ref(generateActivities())
 const timelineItems = ref(generateTimelineItems(activities.value))
-const timeline = ref()
+
 
 const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
-
-function goTo(page) {
-  if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
-    timeline.value.scrollToHour()
-  }
-
-  if (page !== PAGE_TIMELINE) {
-    document.body.scrollIntoView()
-  }
-  currentPage.value = page
-}
 
 function createActivity(activity) {
   activities.value.push(activity)
@@ -77,13 +70,12 @@ provide('deleteActivity', deleteActivity)
 </script>
 
 <template>
-  <AppHeader  @navigate="goTo($event)" />
+  <AppHeader />
   <main class="flex flex-grow flex-col">
     <TimelinePage
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
-      :current-page="currentPage"
-      ref="timeline"
+      ref="timelineRef"
     />
     <ActivitiesPage
       v-show="currentPage === PAGE_ACTIVITIES"
@@ -91,8 +83,5 @@ provide('deleteActivity', deleteActivity)
     />
     <ProgressPage v-show="currentPage === PAGE_PROGRESS" />
   </main>
-  <AppNavigation
-    :current-page="currentPage"
-    @navigate="goTo($event)"
-  />
+  <AppNavigation />
 </template>
