@@ -8,6 +8,7 @@ import {
   isTimelineItemValid
 } from '@/validators.js'
 import { inject } from 'vue'
+import { activitySelectOptionsKey, setTimelineItemActivityKey } from '@/keys.js'
 
 defineProps({
   timelineItem: {
@@ -21,8 +22,8 @@ const emit = defineEmits({
   scrollToHour: isNumber
 })
 
-const activitySelectOptions = inject('activitySelectOptions')
-const setTimelineItemActivity = inject('setTimelineItemActivity')
+const activitySelectOptions = inject(activitySelectOptionsKey)
+const setTimelineItemActivity = inject(setTimelineItemActivityKey)
 
 </script>
 

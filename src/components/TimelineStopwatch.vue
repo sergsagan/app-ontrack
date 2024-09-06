@@ -10,6 +10,7 @@ import {
 } from '@/constans.js'
 import { isTimelineItemValid } from '@/validators.js'
 import { formatSeconds } from '../function.js'
+import { updateTimelineItemActivitySecondsKey } from '@/keys.js'
 
 const props = defineProps({
   timelineItem: {
@@ -19,7 +20,7 @@ const props = defineProps({
   }
 })
 
-const updateTimelineItemActivitySeconds = inject('updateTimelineItemActivitySeconds')
+const updateTimelineItemActivitySeconds = inject(updateTimelineItemActivitySecondsKey)
 
 const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)

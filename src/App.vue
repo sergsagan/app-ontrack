@@ -1,5 +1,5 @@
 <script setup>
-import { computed, provide, ref } from 'vue'
+import { computed, provide, readonly, ref } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
 import TimelinePage from '@/pages/TimelinePage.vue'
@@ -24,6 +24,7 @@ import {
   timelineRef
 } from '@/router.js'
 
+import * as keys from './keys.js'
 
 const activities = ref(generateActivities())
 const timelineItems = ref(generateTimelineItems(activities.value))
@@ -58,14 +59,14 @@ function setActivitySecondsToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }
 
-provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
-provide('timelineItems', timelineItems.value)
-provide('activitySelectOptions', activitySelectOptions)
-provide('periodSelectOptions', generatePeriodSelectOptions())
-provide('setTimelineItemActivity', setTimelineItemActivity)
-provide('setActivitySecondsToComplete', setActivitySecondsToComplete)
-provide('createActivity', createActivity)
-provide('deleteActivity', deleteActivity)
+provide(keys.timelineItemsKey, readonly(timelineItems.value))
+provide(keys.activitySelectOptionsKey, readonly(activitySelectOptions))
+provide(keys.periodSelectOptionsKey, readonly(generatePeriodSelectOptions()))
+provide(keys.updateTimelineItemActivitySecondsKey, updateTimelineItemActivitySeconds)
+provide(keys.setTimelineItemActivityKey, setTimelineItemActivity)
+provide(keys.setActivitySecondsToCompleteKey, setActivitySecondsToComplete)
+provide(keys.createActivityKey, createActivity)
+provide(keys.deleteActivityKey, deleteActivity)
 
 </script>
 
