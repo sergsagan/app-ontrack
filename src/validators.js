@@ -13,7 +13,7 @@ export function isNumberOrNull(value) {
 }
 
 export function isPageValid(page) {
-  return Object.keys(NAV_ITEMS).includes(page)
+  return NAV_ITEMS.some(navItem => navItem.page === page)
 }
 
 export function validateTimelineItems(timelineItems) {
@@ -26,6 +26,10 @@ export function isTimelineItemValid({ hour }) {
 
 export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
+}
+
+export function isNavItemValid(navItem) {
+  return NAV_ITEMS.includes(navItem)
 }
 
 export function isActivityValid({ id, name, secondsToComplete }) {
