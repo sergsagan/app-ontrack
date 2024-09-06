@@ -9,7 +9,7 @@ import {
   MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
 import { isTimelineItemValid } from '@/validators.js'
-import { formatSeconds } from '../function.js'
+import { currentHour, formatSeconds } from '../function.js'
 import { updateTimelineItemActivitySecondsKey } from '@/keys.js'
 
 const props = defineProps({
@@ -26,7 +26,7 @@ const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
 let isInterval = null
 
-const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !==currentHour()
 
 function start() {
   if (!isRunning.value) {
