@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { activities } from '@/activities.js'
-import { HOURS_IN_DAY } from '@/constans.js'
+import { HOURS_IN_DAY, SECONDS_IN_MINUTE } from '@/constans.js'
 
 export const timelineItems = ref(generateTimelineItems())
 
@@ -9,7 +9,7 @@ export function setTimelineItemActivity(timelineItem, activityId) {
 }
 
 export function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
-  timelineItem.activitySeconds += activitySeconds
+  timelineItem.activitySeconds = activitySeconds
 }
 
 export function resetTimelineItemActivities(activity) {
