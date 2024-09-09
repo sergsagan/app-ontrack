@@ -3,10 +3,10 @@ import { TrashIcon } from '@heroicons/vue/24/outline/index.js'
 import BaseSelect from './BaseSelect.vue'
 import BaseButton from './BaseButton.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
-import { BUTTON_TYPE_DANGER } from '@/constans.js'
+import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
 import { isActivityValid } from '@/validators.js'
-import { inject } from 'vue'
-import { deleteActivityKey, periodSelectOptionsKey, setActivitySecondsToCompleteKey } from '@/keys.js'
+import { setActivitySecondsToComplete, deleteActivity} from '@/activities.js'
+import { resetTimelineItemActivities } from '@/timeline-items.js'
 
 
 defineProps({
@@ -17,9 +17,12 @@ defineProps({
   },
 })
 
-const periodSelectOptions = inject(periodSelectOptionsKey)
-const setActivitySecondsToComplete = inject(setActivitySecondsToCompleteKey)
-const deleteActivity = inject(deleteActivityKey)
+function deleteAndResetActivity(activity) {
+  resetTimelineItemActivities(activity)
+  deleteActivity(activity)
+}
+
+
 </script>
 
 <template>
@@ -27,7 +30,7 @@ const deleteActivity = inject(deleteActivityKey)
     <div class="flex items-center gap-2">
       <BaseButton
         :type="BUTTON_TYPE_DANGER"
-        @click="deleteActivity(activity)"
+        @click="deleteAndResetActivity(activity)"
       >
         <TrashIcon class="h-8 text-white" />
       </BaseButton>
@@ -37,7 +40,7 @@ const deleteActivity = inject(deleteActivityKey)
       <BaseSelect
         class="grow font-mono"
         :selected="activity.secondsToComplete || null"
-        :options="periodSelectOptions"
+        :options="PERIOD_SELECT_OPTIONS"
         @select="setActivitySecondsToComplete(activity, $event)"
         placeholder="hh:mm"
       />
