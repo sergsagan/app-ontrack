@@ -5,7 +5,7 @@ import BaseButton from './BaseButton.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
 import { isActivityValid } from '@/validators.js'
-import { setActivitySecondsToComplete, deleteActivity} from '@/activities.js'
+import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities } from '@/timeline-items.js'
 
 
@@ -21,8 +21,6 @@ function deleteAndResetActivity(activity) {
   resetTimelineItemActivities(activity)
   deleteActivity(activity)
 }
-
-
 </script>
 
 <template>
@@ -41,7 +39,7 @@ function deleteAndResetActivity(activity) {
         class="grow font-mono"
         :selected="activity.secondsToComplete || null"
         :options="PERIOD_SELECT_OPTIONS"
-        @select="setActivitySecondsToComplete(activity, $event)"
+        @select="updateActivity(activity, { secondsToComplete :$event || 0 })"
         placeholder="hh:mm"
       />
       <ActivitySecondsToComplete
