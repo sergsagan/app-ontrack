@@ -11,16 +11,13 @@ import {
   PAGE_TIMELINE
 } from './constans.js'
 
-import { currentPage, timelineRef } from '@/router.js'
+import { currentPage } from '@/router.js'
 </script>
 
 <template>
   <AppHeader />
   <main class="flex flex-grow flex-col">
-    <TimelinePage
-      v-show="currentPage === PAGE_TIMELINE"
-      ref="timelineRef"
-    />
+    <TimelinePage v-show="currentPage === PAGE_TIMELINE" />
     <ActivitiesPage v-show="currentPage === PAGE_ACTIVITIES" />
     <ProgressPage v-show="currentPage === PAGE_PROGRESS" />
   </main>

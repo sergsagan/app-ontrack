@@ -1,12 +1,17 @@
 <script setup>
 import { PAGE_TIMELINE } from '@/constans.js'
-import { navigate } from '@/router.js'
+import { currentPage, navigate } from '@/router.js'
+import { scrollToHour } from '@/timeline-items.js'
+
+function handleClick() {
+  currentPage.value === PAGE_TIMELINE ? scrollToHour() : navigate(PAGE_TIMELINE)
+}
 </script>
 
 <template>
   <a
     :href="`#${PAGE_TIMELINE}`"
-    @click="navigate(PAGE_TIMELINE)"
+    @click="handleClick"
   >
     <img
       class="h-9"
