@@ -4,6 +4,7 @@ import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
+import { ICON_TRASH } from '@/icons.js'
 import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities } from '@/timeline-items.js'
@@ -30,7 +31,7 @@ function deleteAndResetActivity(activity) {
         :type="BUTTON_TYPE_DANGER"
         @click="deleteAndResetActivity(activity)"
       >
-        <BaseIcon name="Trash" class="h-8 text-white" />
+        <BaseIcon :name="ICON_TRASH" class="h-8 text-white" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>

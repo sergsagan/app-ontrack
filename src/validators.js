@@ -1,4 +1,5 @@
 import { BUTTON_TYPES, HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.js'
+import { ICONS } from './icons.js'
 
 export function isUndefined(value) {
   return value === undefined
@@ -16,8 +17,8 @@ export function isPageValid(page) {
   return NAV_ITEMS.some(navItem => navItem.page === page)
 }
 
-export function validateTimelineItems(timelineItems) {
-  return timelineItems.every(isTimelineItemValid)
+export function isIconValid(icon) {
+  return Object.keys(ICONS).includes(icon)
 }
 
 export function isTimelineItemValid({ hour }) {

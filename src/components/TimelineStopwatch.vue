@@ -8,7 +8,11 @@ import {
   BUTTON_TYPE_WARNING,
   MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
-
+import {
+  ICON_ARROW_PATH,
+  ICON_PAUSE,
+  ICON_PLAY
+} from '@/icons.js'
 import { isTimelineItemValid } from '@/validators.js'
 import { currentHour, formatSeconds } from '../function.js'
 import { updateTimelineItem } from '@/timeline-items.js'
@@ -32,8 +36,6 @@ watch(
   () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value }))
 
 function start() {
-
-
   if (!isRunning.value) {
     isRunning.value = true
 
@@ -62,7 +64,7 @@ function reset() {
       :disabled="!seconds"
       @click="reset"
     >
-      <BaseIcon name="ArrowPath" class="h-8 text-white" />
+      <BaseIcon :name="ICON_ARROW_PATH" class="h-8 text-white" />
     </BaseButton>
     <div class="flex flex-grow items-center rounded bg-gray-100 px-2 font-mono text-3xl">
       {{ formatSeconds(seconds) }}
@@ -72,7 +74,7 @@ function reset() {
       :type="BUTTON_TYPE_WARNING"
       @click="stop"
     >
-      <BaseIcon name="Pause" class="h-8 text-white" />
+      <BaseIcon :name="ICON_PAUSE" class="h-8 text-white" />
     </BaseButton>
     <BaseButton
       v-else
@@ -80,7 +82,7 @@ function reset() {
       @click="start"
       :disabled="isStartButtonDisabled"
     >
-      <BaseIcon name="Play" class="h-8 text-white" />
+      <BaseIcon :name="ICON_PLAY" class="h-8 text-white" />
     </BaseButton>
   </div>
 </template>
