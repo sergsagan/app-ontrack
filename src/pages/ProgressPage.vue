@@ -5,7 +5,3 @@
 <template>
   <h1>Progress</h1>
 </template>
-
-<style scoped>
-
-</style>

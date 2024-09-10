@@ -29,7 +29,3 @@ const classes = `${typeClasses[props.type]} rounded p-3 disabled:cursor-not-allo
     <slot></slot>
   </button>
 </template>
-
-<style scoped>
-
-</style>

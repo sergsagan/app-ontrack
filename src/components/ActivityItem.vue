@@ -31,7 +31,7 @@ function deleteAndResetActivity(activity) {
         :type="BUTTON_TYPE_DANGER"
         @click="deleteAndResetActivity(activity)"
       >
-        <BaseIcon :name="ICON_TRASH" class="h-8 text-white" />
+        <BaseIcon :name="ICON_TRASH" class="text-white" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>

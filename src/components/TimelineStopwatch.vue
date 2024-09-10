@@ -64,7 +64,7 @@ function reset() {
       :disabled="!seconds"
       @click="reset"
     >
-      <BaseIcon :name="ICON_ARROW_PATH" class="h-8 text-white" />
+      <BaseIcon :name="ICON_ARROW_PATH" class="text-white" />
     </BaseButton>
     <div class="flex flex-grow items-center rounded bg-gray-100 px-2 font-mono text-3xl">
       {{ formatSeconds(seconds) }}
@@ -74,7 +74,7 @@ function reset() {
       :type="BUTTON_TYPE_WARNING"
       @click="stop"
     >
-      <BaseIcon :name="ICON_PAUSE" class="h-8 text-white" />
+      <BaseIcon :name="ICON_PAUSE" class="text-white" />
     </BaseButton>
     <BaseButton
       v-else
@@ -82,7 +82,7 @@ function reset() {
       @click="start"
       :disabled="isStartButtonDisabled"
     >
-      <BaseIcon :name="ICON_PLAY" class="h-8 text-white" />
+      <BaseIcon :name="ICON_PLAY" class="text-white" />
     </BaseButton>
   </div>
 </template>
