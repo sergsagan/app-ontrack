@@ -1,11 +1,11 @@
 import {
-  //SECONDS_IN_HOUR,
+  SECONDS_IN_HOUR,
   RANDOM_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
   MILLISECONDS_IN_SECONDS,
   LOW_PERCENT,
-  HUNDRED_PERCENT
+  HUNDRED_PERCENT,
 } from '@/constans.js'
 import { isNull } from './validators.js'
 
@@ -21,7 +21,7 @@ export function generateActivities() {
   return ['Coding', 'Reading', 'Training'].map((name, hours) => ({
     id: id(),
     name,
-    secondsToComplete: 15 * 60 // hours * SECONDS_IN_HOUR
+    secondsToComplete: hours * SECONDS_IN_HOUR
   }))
 }
 
