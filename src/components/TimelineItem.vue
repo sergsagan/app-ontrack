@@ -18,7 +18,6 @@ defineProps({
 const emit = defineEmits({
   scrollToHour: isUndefined
 })
-
 </script>
 
 <template>
@@ -33,8 +32,6 @@ const emit = defineEmits({
       @select="updateTimelineItem(timelineItem, { activityId: $event })"
       placeholder="Rest"
     />
-    <TimelineStopwatch :timeline-item="timelineItem"
-    />
+    <TimelineStopwatch :timeline-item="timelineItem" />
   </li>
 </template>
-

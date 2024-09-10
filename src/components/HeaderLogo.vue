@@ -9,14 +9,7 @@ function handleClick() {
 </script>
 
 <template>
-  <a
-    :href="`#${PAGE_TIMELINE}`"
-    @click="handleClick"
-  >
-    <img
-      class="h-9"
-      src="@/assets/img/logo.png"
-      alt="Logo"
-    >
+  <a :href="`#${PAGE_TIMELINE}`" @click="handleClick">
+    <img class="h-9" src="@/assets/img/logo.png" alt="Logo" />
   </a>
 </template>

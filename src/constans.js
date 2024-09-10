@@ -1,5 +1,5 @@
 import { generatePeriodSelectOptions } from '@/function.js'
-import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR} from '@/icons.js'
+import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from '@/icons.js'
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activity'
@@ -43,4 +43,3 @@ export const MIDNIGHT_HOUR = 0
 export const RANDOM_HOUR = 36
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
-

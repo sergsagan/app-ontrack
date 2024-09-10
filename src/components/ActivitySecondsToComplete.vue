@@ -18,10 +18,11 @@ const colorClasses = computed(() =>
 
 const seconds = computed(() => `${sign.value}${formatSeconds(secondsDiff.value)}`)
 
-const sign = computed(() => secondsDiff.value >= 0 ? '+' : '-')
+const sign = computed(() => (secondsDiff.value >= 0 ? '+' : '-'))
 
-const secondsDiff = computed( () =>
-  getTotalActivitySeconds(props.activity) - props.activity.secondsToComplete)
+const secondsDiff = computed(
+  () => getTotalActivitySeconds(props.activity) - props.activity.secondsToComplete
+)
 </script>
 
 <template>
@@ -30,6 +31,4 @@ const secondsDiff = computed( () =>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -17,8 +17,7 @@ const classes = computed(() => [
 ])
 </script>
 <template>
-  <li class="flex-1"
-  >
+  <li class="flex-1">
     <a
       :href="`#${navItem.page}`"
       :class="classes"

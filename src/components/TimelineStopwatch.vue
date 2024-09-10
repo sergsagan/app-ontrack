@@ -8,11 +8,7 @@ import {
   BUTTON_TYPE_WARNING,
   MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
-import {
-  ICON_ARROW_PATH,
-  ICON_PAUSE,
-  ICON_PLAY
-} from '@/icons.js'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { isTimelineItemValid } from '@/validators.js'
 import { currentHour, formatSeconds } from '../function.js'
 import { updateTimelineItem } from '@/timeline-items.js'
@@ -29,18 +25,21 @@ const seconds = ref(props.timelineItem?.activitySeconds)
 const isRunning = ref(false)
 let isInterval = null
 
-const isStartButtonDisabled = props.timelineItem?.hour !==currentHour()
+const isStartButtonDisabled = props.timelineItem?.hour !== currentHour()
 
 watch(
   () => props.timelineItem?.activityId,
-  () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value }))
+  () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
+)
 
 function start() {
   if (!isRunning.value) {
     isRunning.value = true
 
     isInterval = setInterval(() => {
-      updateTimelineItem(props.timelineItem, { activitySeconds: props.timelineItem?.activitySeconds + 1 })
+      updateTimelineItem(props.timelineItem, {
+        activitySeconds: props.timelineItem?.activitySeconds + 1
+      })
       seconds.value++
     }, MILLISECONDS_IN_SECONDS)
   }
@@ -52,7 +51,9 @@ function stop() {
 }
 function reset() {
   stop()
-  updateTimelineItem(props.timelineItem, { activitySeconds :props.timelineItem?.activitySeconds - seconds.value })
+  updateTimelineItem(props.timelineItem, {
+    activitySeconds: props.timelineItem?.activitySeconds - seconds.value
+  })
   seconds.value = 0
 }
 </script>

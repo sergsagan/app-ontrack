@@ -10,6 +10,4 @@ import HeaderProgress from './HeaderProgress.vue'
   </header>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

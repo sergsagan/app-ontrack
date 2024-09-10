@@ -12,13 +12,16 @@ export function updateTimelineItem(timelineItem, fields) {
 }
 
 export function resetTimelineItemActivities(activity) {
-  filterTimelineItemsWithActivity(activity)
-    .forEach(timelineItem => updateTimelineItem(timelineItem, { activityId: null, activitySeconds: 0 }))
+  filterTimelineItemsWithActivity(activity).forEach((timelineItem) =>
+    updateTimelineItem(timelineItem, { activityId: null, activitySeconds: 0 })
+  )
 }
 
 export function getTotalActivitySeconds(activity) {
-  return filterTimelineItemsWithActivity(activity)
-    .reduce((totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds), 0)
+  return filterTimelineItemsWithActivity(activity).reduce(
+    (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
+    0
+  )
 }
 
 export function scrollToCurrentHour(isSmooth = false) {
@@ -33,7 +36,7 @@ export function scrollToHour(hour, isSmooth = true) {
 
 function filterTimelineItemsWithActivity(activity) {
   if (Array.isArray(timelineItems.value)) {
-    return timelineItems.value.filter(timelineItem => hasActivity(timelineItem, activity))
+    return timelineItems.value.filter((timelineItem) => hasActivity(timelineItem, activity))
   }
   return []
 }

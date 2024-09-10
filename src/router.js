@@ -3,16 +3,12 @@ import TimelinePage from '@/pages/TimelinePage.vue'
 import ActivitiesPage from '@/pages/ActivitiesPage.vue'
 import ProgressPage from '@/pages/ProgressPage.vue'
 import { isPageValid } from '@/validators.js'
-import {
-  PAGE_ACTIVITIES,
-  PAGE_PROGRESS,
-  PAGE_TIMELINE
-} from './constans.js'
+import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from './constans.js'
 
 export const routes = {
   [PAGE_TIMELINE]: TimelinePage,
   [PAGE_ACTIVITIES]: ActivitiesPage,
-  [PAGE_PROGRESS]: ProgressPage,
+  [PAGE_PROGRESS]: ProgressPage
 }
 
 export const currentPage = ref(normalizePageHash())

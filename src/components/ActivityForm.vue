@@ -10,7 +10,7 @@ import { createActivity } from '@/activities.js'
 const name = ref('')
 
 async function submit() {
-  createActivity( {
+  createActivity({
     id: id(),
     name: name.value,
     secondsToComplete: 0
@@ -20,25 +20,18 @@ async function submit() {
 
   await nextTick()
   window.scrollTo(0, document.body.scrollHeight)
-
 }
 </script>
 
 <template>
-  <form
-    @submit.prevent="submit"
-    class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4"
-  >
+  <form @submit.prevent="submit" class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4">
     <input
       v-model="name"
       type="text"
       class="w-full rounded border px-4 text-xl"
       placeholder="Activity name"
-    >
-    <BaseButton
-      :type="BUTTON_TYPE_PRIMARY"
-      :disabled="name.trim() === ''"
-    >
+    />
+    <BaseButton :type="BUTTON_TYPE_PRIMARY" :disabled="name.trim() === ''">
       <BaseIcon :name="ICON_PLUS" />
     </BaseButton>
   </form>

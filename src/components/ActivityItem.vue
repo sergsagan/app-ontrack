@@ -9,13 +9,12 @@ import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { resetTimelineItemActivities } from '@/timeline-items.js'
 
-
 defineProps({
   activity: {
     type: Object,
     required: true,
     validator: isActivityValid
-  },
+  }
 })
 
 function deleteAndResetActivity(activity) {
@@ -27,10 +26,7 @@ function deleteAndResetActivity(activity) {
 <template>
   <li class="flex flex-col gap-2 p-4">
     <div class="flex items-center gap-2">
-      <BaseButton
-        :type="BUTTON_TYPE_DANGER"
-        @click="deleteAndResetActivity(activity)"
-      >
+      <BaseButton :type="BUTTON_TYPE_DANGER" @click="deleteAndResetActivity(activity)">
         <BaseIcon :name="ICON_TRASH" class="text-white" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
@@ -40,13 +36,10 @@ function deleteAndResetActivity(activity) {
         class="grow font-mono"
         :selected="activity.secondsToComplete || null"
         :options="PERIOD_SELECT_OPTIONS"
-        @select="updateActivity(activity, { secondsToComplete :$event || 0 })"
+        @select="updateActivity(activity, { secondsToComplete: $event || 0 })"
         placeholder="hh:mm"
       />
-      <ActivitySecondsToComplete
-        v-if="activity.secondsToComplete"
-        :activity="activity"
-      />
+      <ActivitySecondsToComplete v-if="activity.secondsToComplete" :activity="activity" />
     </div>
   </li>
 </template>

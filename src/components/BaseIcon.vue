@@ -6,7 +6,7 @@ defineProps({
   name: {
     type: String,
     required: true,
-    validator: isIconValid,
+    validator: isIconValid
   },
   classes: {
     type: String,
@@ -17,9 +17,5 @@ defineProps({
 </script>
 
 <template>
-  <component
-    :is="ICONS[name]"
-    :class="classes"
-  />
+  <component :is="ICONS[name]" :class="classes" />
 </template>
-

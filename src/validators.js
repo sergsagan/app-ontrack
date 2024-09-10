@@ -14,7 +14,7 @@ export function isNumberOrNull(value) {
 }
 
 export function isPageValid(page) {
-  return NAV_ITEMS.some(navItem => navItem.page === page)
+  return NAV_ITEMS.some((navItem) => navItem.page === page)
 }
 
 export function isIconValid(icon) {
@@ -35,14 +35,10 @@ export function isNavItemValid(navItem) {
 
 export function isActivityValid({ id, name, secondsToComplete }) {
   if (isNull(id)) {
-    return true;
+    return true
   }
 
-  return [
-    isNotEmptyString(id),
-    isNotEmptyString(name),
-    isNumber(secondsToComplete)
-  ].every(Boolean)
+  return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
 }
 
 export function validateActivities(activities) {
@@ -84,5 +80,3 @@ function isBetween(value, start, end) {
 function isSelectOptionValid({ value, label }) {
   return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
-
-

@@ -37,21 +37,22 @@ export function formatSeconds(seconds) {
 }
 
 export function generateActivitySelectOptions(activities) {
-  return activities.map((activity) =>
-    ({ value: activity.id, label: activity.name }))
+  return activities.map((activity) => ({ value: activity.id, label: activity.name }))
 }
 
 export function generatePeriodSelectOptions() {
-  const periodsInMinutes = Array.from({length: 32}, (_, i) => (i + 1) * 15);
+  const periodsInMinutes = Array.from({ length: 32 }, (_, i) => (i + 1) * 15)
 
   return periodsInMinutes.map((periodsInMinutes) => ({
-      value: periodsInMinutes * SECONDS_IN_MINUTE,
-      label: generatePeriodSelectOptionsLabel(periodsInMinutes)
+    value: periodsInMinutes * SECONDS_IN_MINUTE,
+    label: generatePeriodSelectOptionsLabel(periodsInMinutes)
   }))
 }
 
 function generatePeriodSelectOptionsLabel(periodsInMinutes) {
-  const hours = Math.floor(periodsInMinutes / MINUTES_IN_HOUR).toString().padStart(2, 0)
+  const hours = Math.floor(periodsInMinutes / MINUTES_IN_HOUR)
+    .toString()
+    .padStart(2, 0)
   const minutes = (periodsInMinutes % MINUTES_IN_HOUR).toString().padStart(2, 0)
 
   return `${hours} : ${minutes}`
