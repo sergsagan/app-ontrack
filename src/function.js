@@ -1,9 +1,11 @@
 import {
-  SECONDS_IN_HOUR,
+  //SECONDS_IN_HOUR,
   RANDOM_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
-  MILLISECONDS_IN_SECONDS
+  MILLISECONDS_IN_SECONDS,
+  LOW_PERCENT,
+  HUNDRED_PERCENT
 } from '@/constans.js'
 import { isNull } from './validators.js'
 
@@ -19,7 +21,7 @@ export function generateActivities() {
   return ['Coding', 'Reading', 'Training'].map((name, hours) => ({
     id: id(),
     name,
-    secondsToComplete: hours * SECONDS_IN_HOUR
+    secondsToComplete: 15 * 60 // hours * SECONDS_IN_HOUR
   }))
 }
 
@@ -47,6 +49,13 @@ export function generatePeriodSelectOptions() {
     value: periodsInMinutes * SECONDS_IN_MINUTE,
     label: generatePeriodSelectOptionsLabel(periodsInMinutes)
   }))
+}
+
+export function getProgressColorClass(percentage) {
+  if (percentage < LOW_PERCENT) return 'bg-red-500'
+  if (percentage < HUNDRED_PERCENT) return 'bg-yellow-500'
+
+  return 'bg-green-500'
 }
 
 function generatePeriodSelectOptionsLabel(periodsInMinutes) {
