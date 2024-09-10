@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import BaseButton from './BaseButton.vue'
-import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/outline/index.js'
+import BaseIcon from './BaseIcon.vue'
 import {
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_SUCCESS,
@@ -62,7 +62,7 @@ function reset() {
       :disabled="!seconds"
       @click="reset"
     >
-      <ArrowPathIcon class="h-8 text-white" />
+      <BaseIcon name="ArrowPath" class="h-8 text-white" />
     </BaseButton>
     <div class="flex flex-grow items-center rounded bg-gray-100 px-2 font-mono text-3xl">
       {{ formatSeconds(seconds) }}
@@ -72,7 +72,7 @@ function reset() {
       :type="BUTTON_TYPE_WARNING"
       @click="stop"
     >
-      <PauseIcon class="h-8 text-white" />
+      <BaseIcon name="Pause" class="h-8 text-white" />
     </BaseButton>
     <BaseButton
       v-else
@@ -80,7 +80,7 @@ function reset() {
       @click="start"
       :disabled="isStartButtonDisabled"
     >
-      <PlayIcon class="h-8 text-white" />
+      <BaseIcon name="Play" class="h-8 text-white" />
     </BaseButton>
   </div>
 </template>

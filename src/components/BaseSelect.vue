@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import BaseButton from '@/components/BaseButton.vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline/index.js'
+import BaseButton from './BaseButton.vue'
+import BaseIcon from './BaseIcon.vue'
 import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '@/validators.js'
 import { BUTTON_TYPE_NEUTRAL } from '@/constans.js'
 import { normalizeSelectValue } from '@/function.js'
@@ -36,7 +36,7 @@ function select(value) {
       :type="BUTTON_TYPE_NEUTRAL"
       @click="select(null)"
     >
-      <XMarkIcon class="h-8" />
+      <BaseIcon name="XMark" class="h-8" />
     </BaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
