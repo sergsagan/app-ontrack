@@ -1,10 +1,10 @@
 <script setup>
 import { PAGE_TIMELINE } from '@/constans.js'
 import { currentPage, navigate } from '@/router.js'
-import { scrollToHour } from '@/timeline-items.js'
+import { scrollToCurrentHour } from '@/timeline-items.js'
 
 function handleClick() {
-  currentPage.value === PAGE_TIMELINE ? scrollToHour() : navigate(PAGE_TIMELINE)
+  currentPage.value === PAGE_TIMELINE ? scrollToCurrentHour() : navigate(PAGE_TIMELINE)
 }
 </script>
 
