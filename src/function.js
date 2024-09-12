@@ -29,6 +29,10 @@ export function id() {
   return Date.now().toString(RANDOM_HOUR) + Math.random().toString(RANDOM_HOUR).substring(2)
 }
 
+export function formatSecondsWithSign(seconds) {
+  return `${seconds >= 0 ? '+' : '-'}${ formatSeconds(seconds)}`
+}
+
 export function formatSeconds(seconds) {
   const date = new Date()
 
