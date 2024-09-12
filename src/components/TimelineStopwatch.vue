@@ -1,16 +1,16 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import {
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_SUCCESS,
   BUTTON_TYPE_WARNING,
-  MILLISECONDS_IN_SECONDS
 } from '@/constans.js'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { isTimelineItemValid } from '@/validators.js'
 import { currentHour, formatSeconds } from '../function.js'
+import { useStopwatch } from '@/composables/stopwatch.js'
 import { updateTimelineItem } from '@/timeline-items.js'
 
 const props = defineProps({
@@ -21,40 +21,15 @@ const props = defineProps({
   }
 })
 
-const seconds = ref(props.timelineItem?.activitySeconds)
-const isRunning = ref(false)
-let isInterval = null
-
-const isStartButtonDisabled = props.timelineItem?.hour !== currentHour()
-
-watch(
-  () => props.timelineItem?.activityId,
-  () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
+const { seconds, isRunning, start, reset, stop } = useStopwatch(
+  props.timelineItem?.activitySeconds,
+  updateTimelineItemActivitySeconds
 )
 
-function start() {
-  if (!isRunning.value) {
-    isRunning.value = true
+watch(() => props.timelineItem?.activityId, updateTimelineItemActivitySeconds)
 
-    isInterval = setInterval(() => {
-      updateTimelineItem(props.timelineItem, {
-        activitySeconds: props.timelineItem?.activitySeconds + 1
-      })
-      seconds.value++
-    }, MILLISECONDS_IN_SECONDS)
-  }
-}
-function stop() {
-  clearInterval(isInterval)
-
-  isRunning.value = false
-}
-function reset() {
-  stop()
-  updateTimelineItem(props.timelineItem, {
-    activitySeconds: props.timelineItem?.activitySeconds - seconds.value
-  })
-  seconds.value = 0
+function updateTimelineItemActivitySeconds() {
+  updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
 }
 </script>
 
@@ -81,7 +56,7 @@ function reset() {
       v-else
       :type="BUTTON_TYPE_SUCCESS"
       @click="start"
-      :disabled="isStartButtonDisabled"
+      :disabled="props.timelineItem.hour !== currentHour()"
     >
       <BaseIcon :name="ICON_PLAY" class="text-white" />
     </BaseButton>
