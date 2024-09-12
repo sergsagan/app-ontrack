@@ -7,7 +7,7 @@ import { isTimelineItemValid } from '@/validators.js'
 import { updateTimelineItem } from '@/timeline-items.js'
 import { activitySelectOptions } from '@/activities.js'
 
-defineProps({
+const props = defineProps({
   timelineItem: {
     type: Object,
     required: true,
@@ -18,13 +18,13 @@ defineProps({
 
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
-    <TimelineHour :hour="timelineItem.hour" />
+    <TimelineHour :hour="props.timelineItem.hour" />
     <BaseSelect
-      :selected="timelineItem.activityId"
+      :selected="props.timelineItem.activityId"
       :options="activitySelectOptions"
-      @select="updateTimelineItem(timelineItem, { activityId: $event })"
+      @select="updateTimelineItem(props.timelineItem, { activityId: $event })"
       placeholder="Rest"
     />
-    <TimelineStopwatch :timeline-item="timelineItem" />
+    <TimelineStopwatch :timeline-item="props.timelineItem" />
   </li>
 </template>
