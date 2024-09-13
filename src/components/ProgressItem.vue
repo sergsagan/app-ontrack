@@ -2,6 +2,7 @@
 import { formatSeconds } from '@/function.js'
 import { isActivityValid } from '@/validators.js'
 import { useProgress } from '@/composables/progress.js'
+import { HUNDRED_PERCENT } from '@/constans.js'
 
 const props = defineProps({
   activity: {
@@ -11,7 +12,7 @@ const props = defineProps({
   }
 })
 
-const { colorClass, percentage, trackedSeconds} = useProgress(props.activity)
+const { colorClass, percentage, trackedActivitySeconds} = useProgress(props.activity)
 </script>
 
 <template>
@@ -19,14 +20,14 @@ const { colorClass, percentage, trackedSeconds} = useProgress(props.activity)
     <div class="truncate text-xl">{{ props.activity.name }}</div>
     <div class="flex h-5 overflow-hidden rounded bg-neutral-200">
       <div
-        :class="colorClass"
-        :style="`width: ${percentage}%`"
+        :class="['transition-all', colorClass]"
+        :style="{width: `${Math.min(percentage, HUNDRED_PERCENT)}%`}"
       />
     </div>
     <div class="flex justify-between font-mono text-sm">
       <span>{{ percentage }}%</span>
       <span>
-        {{ formatSeconds(trackedSeconds) }} /
+        {{ formatSeconds(trackedActivitySeconds) }} /
         {{ formatSeconds(props.activity.secondsToComplete) }}
       </span>
     </div>
