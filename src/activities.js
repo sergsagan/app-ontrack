@@ -14,6 +14,10 @@ export function calculateActivityComplectionPercentage({ secondsToComplete }, tr
   return Math.floor(trackedSeconds * HUNDRED_PERCENT / secondsToComplete)
 }
 
+export function calculateComplectionPercentage(totalTrackedSeconds) {
+  return Math.floor(totalTrackedSeconds * HUNDRED_PERCENT / totalActivitySecondsToComplete.value)
+}
+
 export function createActivity(activity) {
   activities.value.push(activity)
 }
@@ -25,3 +29,9 @@ export function updateActivity(activity, fields) {
 export function deleteActivity(activity) {
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
+
+const totalActivitySecondsToComplete = computed(() => {
+  return trackedActivities.value
+    .map(({ secondsToComplete }) => secondsToComplete)
+    .reduce((total, seconds) => total + seconds, 0)
+})
