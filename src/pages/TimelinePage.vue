@@ -1,6 +1,7 @@
 <script setup>
 import { onActivated } from 'vue'
 import TimelineItem from '@/components/TimelineItem.vue'
+import TimelineBar from '@/components/TimelineBar.vue'
 import {
   timelineItems,
   timelineItemRefs,
@@ -12,7 +13,8 @@ onActivated(scrollToCurrentHour)
 </script>
 
 <template>
-  <div class="mt-7">
+  <div class="relative mt-7">
+    <TimelineBar />
     <ul>
       <TimelineItem
         v-for="timelineItem in timelineItems"
