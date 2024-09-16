@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect, onActivated, onDeactivated } from 'vue'
 import {
   HUNDRED_PERCENT,
   MILLISECONDS_IN_SECONDS,
@@ -11,7 +11,15 @@ import {
 const barRef = ref()
 const secondsSinceMidnight = ref(calculateSecondsSinceMidnight())
 
-setInterval(() => secondsSinceMidnight.value++, MILLISECONDS_IN_SECONDS)
+let timer = null
+
+onActivated(() => {
+  secondsSinceMidnight.value = calculateSecondsSinceMidnight()
+
+  timer = setInterval(() => secondsSinceMidnight.value++, MILLISECONDS_IN_SECONDS)
+})
+
+onDeactivated(() => clearInterval(timer))
 
 const topOffset = computed(() => {
   return (secondsSinceMidnightInPercentage.value * getTimelineHeight()) / HUNDRED_PERCENT
