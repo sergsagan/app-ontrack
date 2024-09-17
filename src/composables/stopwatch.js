@@ -19,7 +19,7 @@ export function useStopwatch(initialSeconds) {
 
     isRunning.value = false
   }
-  
+
   function reset() {
     stop()
 
