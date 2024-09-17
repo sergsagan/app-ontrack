@@ -13,10 +13,6 @@ export function normalizeSelectValue(value) {
   return isNull(value) || isNaN(value) ? value : +value
 }
 
-export function currentHour() {
-  return new Date().getHours()
-}
-
 export function generateActivities() {
   return ['Coding', 'Reading', 'Training'].map((name, hours) => ({
     id: id(),

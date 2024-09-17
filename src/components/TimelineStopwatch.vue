@@ -9,9 +9,10 @@ import {
 } from '@/constans.js'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { isTimelineItemValid } from '@/validators.js'
-import { currentHour, formatSeconds } from '../function.js'
+import { formatSeconds } from '../function.js'
 import { useStopwatch } from '@/composables/stopwatch.js'
 import { updateTimelineItem } from '@/timeline-items.js'
+import { now } from '@/time.js'
 
 const props = defineProps({
   timelineItem: {
@@ -24,6 +25,12 @@ const props = defineProps({
 const { seconds, isRunning, start, reset, stop } = useStopwatch(
   props.timelineItem?.activitySeconds
 )
+
+watchEffect(() => {
+  if (props.timelineItem?.hour !== now.value.getHours() && isRunning.value) {
+    stop()
+  }
+})
 
 watchEffect(() =>
   updateTimelineItem(
@@ -56,7 +63,7 @@ watchEffect(() =>
       v-else
       :type="BUTTON_TYPE_SUCCESS"
       @click="start"
-      :disabled="props.timelineItem.hour !== currentHour()"
+      :disabled="props.timelineItem.hour !== now.getHours()"
     >
       <BaseIcon :name="ICON_PLAY" class="text-white" />
     </BaseButton>
