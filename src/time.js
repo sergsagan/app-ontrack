@@ -3,6 +3,7 @@ import {
   HUNDRED_PERCENT,
   MILLISECONDS_IN_SECONDS,
   SECONDS_IN_DAY,
+  SECONDS_IN_MINUTE
 } from '@/constans.js'
 
 export function today() {
@@ -45,7 +46,7 @@ export function startTimer() {
   now.value = today()
 
   timer = setInterval(() => {
-    now.value = new Date(now.value.getTime())
+    now.value = new Date(now.value.getTime() + SECONDS_IN_MINUTE * MILLISECONDS_IN_SECONDS)
   }, MILLISECONDS_IN_SECONDS)
 }
 

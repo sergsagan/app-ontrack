@@ -24,14 +24,11 @@ function handleClick() {
     ? scrollToCurrentHour(true)
     : navigate(props.navItem?.page)
 }
+
 </script>
 <template>
   <li class="flex-1">
-    <a
-      :href="`#${props.navItem.page}`"
-      :class="classes"
-      @click="handleClick"
-    >
+    <a :href="`#${props.navItem.page}`" :class="classes" @click="handleClick">
       <BaseIcon :name="props.navItem.icon" class="h-6 w-6" /> {{ props.navItem.page }}
     </a>
   </li>
