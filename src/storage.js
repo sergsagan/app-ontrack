@@ -1,15 +1,15 @@
-import { APP_NAME } from '@/constans.js';
-import { isToday, today } from '@/time.js'
-import { timelineItems } from '@/timeline-items.js'
-import { activities } from '@/activities.js'
+import { APP_NAME } from '@/constans.js'
+import { isToday, today } from '@/time'
+import { timelineItems } from '@/timeline-items'
+import { activities } from '@/activities'
 
 export function loadState() {
-  const serializesState = localStorage.getItem(APP_NAME)
+  const serializedState = localStorage.getItem(APP_NAME)
 
-  const state = serializesState ? JSON.parse(serializesState) : {}
+  const state = serializedState ? JSON.parse(serializedState) : {}
 
   timelineItems.value = isToday(new Date(state.date)) ? state.timelineItems : timelineItems.value
-  activities.value = serializesState.activities || activities.value
+  activities.value = state.activities || activities.value
 }
 
 export function saveState() {

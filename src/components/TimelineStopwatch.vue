@@ -1,30 +1,30 @@
 <script setup>
-import { watchEffect } from 'vue'
+import { onMounted, watch, watchEffect } from 'vue'
+import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '../constants'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons'
+import { formatSeconds } from '../functions'
+import { isTimelineItemValid } from '../validators'
+import { updateTimelineItem } from '../timeline-items'
+import { now } from '../time'
+import { useStopwatch } from '../composables/stopwatch'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import {
-  BUTTON_TYPE_DANGER,
-  BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING,
-} from '@/constans.js'
-import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
-import { isTimelineItemValid } from '@/validators.js'
-import { formatSeconds } from '../function.js'
-import { useStopwatch } from '@/composables/stopwatch.js'
-import { updateTimelineItem } from '@/timeline-items.js'
-import { now } from '@/time.js'
 
 const props = defineProps({
   timelineItem: {
-    type: Object,
     required: true,
+    type: Object,
     validator: isTimelineItemValid
   }
 })
 
-const { seconds, isRunning, start, reset, stop } = useStopwatch(
-  props.timelineItem?.activitySeconds
-)
+const { seconds, isRunning, start, stop, reset } = useStopwatch(props.timelineItem.activitySeconds)
+
+onMounted(() => {
+  if (props.timelineItem?.isActive) {
+    start()
+  }
+})
 
 watchEffect(() => {
   if (props.timelineItem?.hour !== now.value.getHours() && isRunning.value) {
@@ -33,39 +33,36 @@ watchEffect(() => {
 })
 
 watchEffect(() =>
-  updateTimelineItem(
-    props.timelineItem,
-    { activitySeconds: seconds.value }
-  )
+  updateTimelineItem(props.timelineItem, {
+    activitySeconds: seconds.value
+  })
+)
+
+watch(isRunning, () =>
+  updateTimelineItem(props.timelineItem, {
+    isActive: Boolean(isRunning.value)
+  })
 )
 </script>
 
 <template>
-  <div class="flex w-full gap-2 items-center">
-    <BaseButton
-      :type="BUTTON_TYPE_DANGER"
-      :disabled="!props.timelineItem.activitySeconds"
-      @click="reset"
-    >
-      <BaseIcon :name="ICON_ARROW_PATH" class="text-white" />
+  <div class="flex w-full gap-2">
+    <BaseButton :type="BUTTON_TYPE_DANGER" :disabled="!props.timelineItem.activitySeconds" @click="reset">
+      <BaseIcon :name="ICON_ARROW_PATH" />
     </BaseButton>
     <div class="flex flex-grow items-center rounded bg-gray-100 px-2 font-mono text-3xl">
       {{ formatSeconds(props.timelineItem.activitySeconds) }}
     </div>
-    <BaseButton
-      v-if="isRunning"
-      :type="BUTTON_TYPE_WARNING"
-      @click="stop"
-    >
-      <BaseIcon :name="ICON_PAUSE" class="text-white" />
+    <BaseButton v-if="isRunning" :type="BUTTON_TYPE_WARNING" @click="stop">
+      <BaseIcon :name="ICON_PAUSE" />
     </BaseButton>
     <BaseButton
       v-else
       :type="BUTTON_TYPE_SUCCESS"
-      @click="start"
       :disabled="props.timelineItem.hour !== now.getHours()"
+      @click="start"
     >
-      <BaseIcon :name="ICON_PLAY" class="text-white" />
+      <BaseIcon :name="ICON_PLAY" />
     </BaseButton>
   </div>
 </template>
