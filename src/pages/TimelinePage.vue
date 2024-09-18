@@ -5,9 +5,12 @@ import TimelineBar from '@/components/TimelineBar.vue'
 import {
   timelineItems,
   timelineItemRefs,
-  scrollToCurrentHour
+  scrollToCurrentHour,
+  stopTimelineItemTimer
 } from '@/timeline-items.js'
 import { startTimer, stopTimer } from '@/time.js'
+
+stopTimelineItemTimer()
 
 onActivated(() => {
   scrollToCurrentHour()

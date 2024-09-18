@@ -12,7 +12,7 @@ const props = defineProps({
   }
 })
 
-const { colorClass, percentage, trackedActivitySeconds} = useProgress(props.activity)
+const { colorClass, percentage, trackedActivitySeconds } = useProgress(props.activity)
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { colorClass, percentage, trackedActivitySeconds} = useProgress(props.acti
     <div class="flex h-5 overflow-hidden rounded bg-neutral-200">
       <div
         :class="['transition-all', colorClass]"
-        :style="{width: `${Math.min(percentage, HUNDRED_PERCENT)}%`}"
+        :style="{ width: `${Math.min(percentage, HUNDRED_PERCENT)}%` }"
       />
     </div>
     <div class="flex justify-between font-mono text-sm">
@@ -33,4 +33,3 @@ const { colorClass, percentage, trackedActivitySeconds} = useProgress(props.acti
     </div>
   </li>
 </template>
-

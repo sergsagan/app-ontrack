@@ -10,7 +10,12 @@ export function useTotalProgress() {
 
   const totalTrackedSeconds = computed(() => {
     return trackedActivities.value
-      .map((activity) => Math.min(calculateTrackedActivitySeconds(timelineItems.value, activity), activity.secondsToComplete))
+      .map((activity) =>
+        Math.min(
+          calculateTrackedActivitySeconds(timelineItems.value, activity),
+          activity.secondsToComplete
+        )
+      )
       .reduce((total, seconds) => total + seconds, 0)
   })
 

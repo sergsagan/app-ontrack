@@ -3,9 +3,9 @@ import {
   RANDOM_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
-  MILLISECONDS_IN_SECONDS,
+  MILLISECONDS_IN_SECOND,
   LOW_PERCENT,
-  HUNDRED_PERCENT,
+  HUNDRED_PERCENT
 } from '@/constans.js'
 import { isNull } from './validators.js'
 
@@ -26,13 +26,13 @@ export function id() {
 }
 
 export function formatSecondsWithSign(seconds) {
-  return `${seconds >= 0 ? '+' : '-'}${ formatSeconds(seconds)}`
+  return `${seconds >= 0 ? '+' : '-'}${formatSeconds(seconds)}`
 }
 
 export function formatSeconds(seconds) {
   const date = new Date()
 
-  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECONDS)
+  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)
   const utc = date.toUTCString()
 
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)

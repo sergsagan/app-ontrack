@@ -5,7 +5,7 @@ import { ICON_CHECK_CIRCLE } from '@/icons.js'
 import { navigate } from '@/router.js'
 import { useTotalProgress } from '@/composables/total-progress.js'
 
-const { colorClass, percentage} = useTotalProgress()
+const { colorClass, percentage } = useTotalProgress()
 </script>
 
 <template>
@@ -15,7 +15,9 @@ const { colorClass, percentage} = useTotalProgress()
     class="text-sm"
   >
     <div v-if="percentage < HUNDRED_PERCENT" class="flex items-center gap-1">
-      <div>Progress: <span class="font-mono">{{ percentage }}%</span></div>
+      <div>
+        Progress: <span class="font-mono">{{ percentage }}%</span>
+      </div>
       <div :class="`h-3 w-3 rounded-full ${colorClass}`"></div>
     </div>
     <div v-else class="flex items-center gap-1">

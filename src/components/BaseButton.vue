@@ -28,7 +28,7 @@ const props = defineProps({
 })
 
 const classes = [
- 'rounded p-3 disabled:cursor-not-allowed disabled:opacity-50',
+  'rounded p-3 disabled:cursor-not-allowed disabled:opacity-50',
   typeClasses[props.type]
 ]
 </script>

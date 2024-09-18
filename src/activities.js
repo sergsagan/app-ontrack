@@ -11,11 +11,11 @@ export const trackedActivities = computed(() =>
 )
 
 export function calculateActivityComplectionPercentage({ secondsToComplete }, trackedSeconds) {
-  return Math.floor(trackedSeconds * HUNDRED_PERCENT / secondsToComplete)
+  return Math.floor((trackedSeconds * HUNDRED_PERCENT) / secondsToComplete)
 }
 
 export function calculateComplectionPercentage(totalTrackedSeconds) {
-  return Math.floor(totalTrackedSeconds * HUNDRED_PERCENT / totalActivitySecondsToComplete.value)
+  return Math.floor((totalTrackedSeconds * HUNDRED_PERCENT) / totalActivitySecondsToComplete.value)
 }
 
 export function createActivity(activity) {

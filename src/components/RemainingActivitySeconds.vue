@@ -16,8 +16,10 @@ const colorClasses = computed(() =>
   remainingSeconds.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
 )
 
-const remainingSeconds = computed(() =>
-  calculateTrackedActivitySeconds(timelineItems.value, props.activity) - props.activity?.secondsToComplete
+const remainingSeconds = computed(
+  () =>
+    calculateTrackedActivitySeconds(timelineItems.value, props.activity) -
+    props.activity?.secondsToComplete
 )
 </script>
 

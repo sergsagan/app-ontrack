@@ -49,5 +49,3 @@ export function startTimer() {
 export function stopTimer() {
   clearInterval(timer)
 }
-
-

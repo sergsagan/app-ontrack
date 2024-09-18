@@ -11,7 +11,9 @@ export function useStopwatch(initialSeconds) {
     if (!isRunning.value) {
       isRunning.value = true
 
-      isInterval = setInterval(() => {seconds.value += temp}, MILLISECONDS_IN_SECOND)
+      isInterval = setInterval(() => {
+        seconds.value += temp
+      }, MILLISECONDS_IN_SECOND)
     }
   }
 
@@ -32,6 +34,6 @@ export function useStopwatch(initialSeconds) {
     isRunning,
     start,
     stop,
-    reset,
+    reset
   }
 }

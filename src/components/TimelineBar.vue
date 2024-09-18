@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { HUNDRED_PERCENT, } from '@/constans.js'
+import { HUNDRED_PERCENT } from '@/constans.js'
 import { secondsSinceMidnightInPercentage } from '@/time.js'
 
 const barRef = ref()
@@ -19,6 +19,5 @@ function getTimelineHeight() {
     ref="barRef"
     class="pointer-events-none absolute z-10 w-full border-b-2 border-red-600"
     :style="{ top: `${topOffset}px` }"
-  >
+  />
 </template>
-

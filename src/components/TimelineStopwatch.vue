@@ -1,14 +1,14 @@
 <script setup>
 import { onMounted, watch, watchEffect } from 'vue'
-import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '../constants'
-import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons'
-import { formatSeconds } from '../functions'
-import { isTimelineItemValid } from '../validators'
-import { updateTimelineItem } from '../timeline-items'
-import { now } from '../time'
-import { useStopwatch } from '../composables/stopwatch'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
+import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.js'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
+import { formatSeconds } from '@/function.js'
+import { isTimelineItemValid } from '@/validators'
+import { updateTimelineItem } from '@/timeline-items'
+import { now } from '@/time'
+import { useStopwatch } from '@/composables/stopwatch'
 
 const props = defineProps({
   timelineItem: {
@@ -18,7 +18,7 @@ const props = defineProps({
   }
 })
 
-const { seconds, isRunning, start, stop, reset } = useStopwatch(props.timelineItem.activitySeconds)
+const { seconds, isRunning, start, stop, reset } = useStopwatch(props.timelineItem?.activitySeconds)
 
 onMounted(() => {
   if (props.timelineItem?.isActive) {
@@ -47,7 +47,11 @@ watch(isRunning, () =>
 
 <template>
   <div class="flex w-full gap-2">
-    <BaseButton :type="BUTTON_TYPE_DANGER" :disabled="!props.timelineItem.activitySeconds" @click="reset">
+    <BaseButton
+      :type="BUTTON_TYPE_DANGER"
+      :disabled="!props.timelineItem.activitySeconds"
+      @click="reset"
+    >
       <BaseIcon :name="ICON_ARROW_PATH" />
     </BaseButton>
     <div class="flex flex-grow items-center rounded bg-gray-100 px-2 font-mono text-3xl">

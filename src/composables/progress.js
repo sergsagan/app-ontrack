@@ -17,6 +17,6 @@ export function useProgress(activity) {
   return {
     colorClass,
     percentage,
-    trackedActivitySeconds,
+    trackedActivitySeconds
   }
 }

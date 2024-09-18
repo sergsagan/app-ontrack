@@ -39,7 +39,10 @@ function deleteAndResetActivity(activity) {
         @select="updateActivity(props.activity, { secondsToComplete: $event || 0 })"
         placeholder="hh:mm"
       />
-      <RemainingActivitySeconds v-if="props.activity.secondsToComplete" :activity="props.activity" />
+      <RemainingActivitySeconds
+        v-if="props.activity.secondsToComplete"
+        :activity="props.activity"
+      />
     </div>
   </li>
 </template>
