@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue'
-import { generateActivities, generateActivitySelectOptions } from '@/function.js'
+import { generateActivitySelectOptions } from '@/function.js'
 import { HUNDRED_PERCENT } from '@/constans.js'
 
-export const activities = ref(generateActivities())
+export const activities = ref([])
 
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 

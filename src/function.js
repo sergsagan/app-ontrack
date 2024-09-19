@@ -1,5 +1,4 @@
 import {
-  SECONDS_IN_HOUR,
   RANDOM_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
@@ -11,14 +10,6 @@ import { isNull } from './validators.js'
 
 export function normalizeSelectValue(value) {
   return isNull(value) || isNaN(value) ? value : +value
-}
-
-export function generateActivities() {
-  return ['Coding', 'Reading', 'Training'].map((name, hours) => ({
-    id: id(),
-    name,
-    secondsToComplete: hours * SECONDS_IN_HOUR
-  }))
 }
 
 export function id() {
