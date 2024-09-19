@@ -1,17 +1,10 @@
-import { ref, computed } from 'vue'
-import {
-  HUNDRED_PERCENT,
-  SECONDS_IN_DAY,
-  MILLISECONDS_IN_SECOND,
-  SECONDS_IN_MINUTE
-} from '@/constans.js'
+import { computed, ref } from 'vue'
+import { HUNDRED_PERCENT, MILLISECONDS_IN_SECOND, SECONDS_IN_DAY } from '@/constans.js'
 
 export function today() {
-  const today = new Date()
+  //today.setHours(0, 0)
 
-  today.setHours(0, 0)
-
-  return today
+  return new Date()
 }
 
 export function tomorrow() {
@@ -42,7 +35,7 @@ export function startTimer() {
   now.value = today()
 
   timer = setInterval(() => {
-    now.value = new Date(now.value.getTime() + SECONDS_IN_MINUTE * MILLISECONDS_IN_SECOND)
+    now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND)
   }, MILLISECONDS_IN_SECOND)
 }
 
