@@ -7,13 +7,7 @@ import {
 } from '@/constans.js'
 
 export function today() {
-  const today = new Date()
-
-  today.setHours(11)
-  today.setMinutes(59)
-  today.setSeconds(55)
-
-  return today
+  return new Date()
 }
 
 export function isToday(date) {
