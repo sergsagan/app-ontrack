@@ -6,11 +6,9 @@ import {
   timelineItems,
   timelineItemRefs,
   scrollToCurrentHour,
-  stopTimelineItemTimer
 } from '@/timeline-items.js'
 import { startCurrentDateTimer, stopCurrentDateTimer } from '@/time.js'
 
-stopTimelineItemTimer()
 
 onActivated(() => {
   scrollToCurrentHour()
