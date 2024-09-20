@@ -2,13 +2,8 @@
 import { onActivated, onDeactivated } from 'vue'
 import TimelineItem from '@/components/TimelineItem.vue'
 import TimelineBar from '@/components/TimelineBar.vue'
-import {
-  timelineItems,
-  timelineItemRefs,
-  scrollToCurrentHour,
-} from '@/timeline-items.js'
+import { timelineItems, timelineItemRefs, scrollToCurrentHour } from '@/timeline-items.js'
 import { startCurrentDateTimer, stopCurrentDateTimer } from '@/time.js'
-
 
 onActivated(() => {
   scrollToCurrentHour()

@@ -27,5 +27,3 @@ const formattedHour = `${props.hour.toString().padStart(2, 0)}:00`
     {{ formattedHour }}
   </a>
 </template>
-
-<style scoped></style>

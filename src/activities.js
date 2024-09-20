@@ -11,7 +11,7 @@ export const trackedActivities = computed(() =>
 )
 
 export function initializeActivities(state) {
-  return activities.value = state.activities || []
+  return (activities.value = state.activities || [])
 }
 
 export function calculateActivityComplectionPercentage({ secondsToComplete }, trackedSeconds) {

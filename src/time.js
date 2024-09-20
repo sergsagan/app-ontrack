@@ -1,16 +1,13 @@
 import { computed, ref } from 'vue'
-import { HUNDRED_PERCENT, MILLISECONDS_IN_SECOND, SECONDS_IN_DAY, SECONDS_IN_HOUR } from '@/constans.js'
+import {
+  HUNDRED_PERCENT,
+  MILLISECONDS_IN_SECOND,
+  SECONDS_IN_DAY,
+  SECONDS_IN_HOUR
+} from '@/constans.js'
 
 export function today() {
   return new Date()
-}
-
-export function tomorrow() {
-  const tomorrow = today()
-
-  tomorrow.setDate(tomorrow.getDate() + 1)
-
-  return tomorrow
 }
 
 export function endOfHour(date) {
@@ -42,9 +39,7 @@ let currentDateTimer = null
 export function startCurrentDateTimer() {
   now.value = today()
 
-  currentDateTimer = setInterval(() => {
-    now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND)
-  }, MILLISECONDS_IN_SECOND)
+  currentDateTimer = setInterval(() => (now.value = today()), MILLISECONDS_IN_SECOND)
 }
 
 export function stopCurrentDateTimer() {

@@ -6,7 +6,11 @@ import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 import { formatSeconds } from '@/function.js'
 import { isTimelineItemValid } from '@/validators'
 import { now } from '@/time'
-import { resetTimelineItemTimer, startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
+import {
+  resetTimelineItemTimer,
+  startTimelineItemTimer,
+  stopTimelineItemTimer
+} from '@/timeline-item-timer.js'
 import { activeTimelineItem } from '@/timeline-items.js'
 
 const props = defineProps({
@@ -16,7 +20,6 @@ const props = defineProps({
     validator: isTimelineItemValid
   }
 })
-
 </script>
 
 <template>
