@@ -7,7 +7,17 @@ import {
 } from '@/constans.js'
 
 export function today() {
-  return new Date()
+  const today = new Date()
+
+  today.setHours(11)
+  today.setMinutes(59)
+  today.setSeconds(55)
+
+  return today
+}
+
+export function isToday(date) {
+  return date.toDateString() === today().toDateString()
 }
 
 export function endOfHour(date) {
@@ -20,12 +30,12 @@ export function endOfHour(date) {
   return endOfHour
 }
 
-export function isToday(date) {
-  return date.toDateString() === today().toDateString()
-}
-
 export function toSeconds(milliseconds) {
   return Math.round(milliseconds / MILLISECONDS_IN_SECOND)
+}
+
+export function startCurrentDateTimer() {
+  setInterval(() => (now.value = today()), MILLISECONDS_IN_SECOND)
 }
 
 export const now = ref(today())
@@ -33,18 +43,6 @@ export const now = ref(today())
 export const secondsSinceMidnightInPercentage = computed(
   () => (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY
 )
-
-let currentDateTimer = null
-
-export function startCurrentDateTimer() {
-  now.value = today()
-
-  currentDateTimer = setInterval(() => (now.value = today()), MILLISECONDS_IN_SECOND)
-}
-
-export function stopCurrentDateTimer() {
-  clearInterval(currentDateTimer)
-}
 
 const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
 
