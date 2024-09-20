@@ -10,6 +10,10 @@ export const trackedActivities = computed(() =>
   activities.value.filter(({ secondsToComplete }) => secondsToComplete)
 )
 
+export function initializeActivities(state) {
+  return activities.value = state.activities || []
+}
+
 export function calculateActivityComplectionPercentage({ secondsToComplete }, trackedSeconds) {
   return Math.floor((trackedSeconds * HUNDRED_PERCENT) / secondsToComplete)
 }
