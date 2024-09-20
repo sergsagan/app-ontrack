@@ -1,5 +1,5 @@
 import { APP_NAME } from '@/constans.js'
-import { endOfHour, isToday, today, tomorrow, toSeconds } from '@/time'
+import { endOfHour, isToday, today, toSeconds } from '@/time'
 import { activeTimelineItem, resetTimelineItems, timelineItems } from '@/timeline-items'
 import { activities } from '@/activities'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
