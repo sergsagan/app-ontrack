@@ -1,13 +1,6 @@
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { MILLISECONDS_IN_SECOND } from '@/constans.js'
-import { now } from '@/time.js'
 import { activeTimelineItem, updateTimelineItem } from '@/timeline-items.js'
-
-watchEffect(() => {
-  if (activeTimelineItem.value && activeTimelineItem.value.hour !== now.value.getHours()) {
-    stopTimelineItemTimer()
-  }
-})
 
 const timelineItemTimer = ref(false)
 
