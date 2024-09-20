@@ -6,7 +6,8 @@ import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 import { formatSeconds } from '@/function.js'
 import { isTimelineItemValid } from '@/validators'
 import { now } from '@/time'
-import { timelineItemTimer, resetTimelineItemTimer, startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
+import { resetTimelineItemTimer, startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
+import { activeTimelineItem } from '@/timeline-items.js'
 
 const props = defineProps({
   timelineItem: {
@@ -31,9 +32,9 @@ const props = defineProps({
       {{ formatSeconds(props.timelineItem.activitySeconds) }}
     </div>
     <BaseButton
-      v-if="timelineItemTimer && props.timelineItem.hour === now.getHours()"
+      v-if="timelineItem === activeTimelineItem"
       :type="BUTTON_TYPE_WARNING"
-      @click="stopTimelineItemTimer(props.timelineItem)"
+      @click="stopTimelineItemTimer"
     >
       <BaseIcon :name="ICON_PAUSE" />
     </BaseButton>
