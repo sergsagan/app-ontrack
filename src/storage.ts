@@ -3,6 +3,7 @@ import { today } from '@/time'
 import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/timeline-items'
 import { activities, initializeActivities } from '@/activities.ts'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
+import type { State } from '@/types.ts'
 
 export function syncState(shouldLoad = true) {
   shouldLoad ? loadState() : saveState()
@@ -31,6 +32,6 @@ function saveState() {
   )
 }
 
-function loadFromLocalStorage() {
+function loadFromLocalStorage(): State {
   return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}')
 }

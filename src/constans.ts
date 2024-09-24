@@ -1,9 +1,8 @@
 import { generatePeriodSelectOptions } from '@/function.ts'
 import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from '@/icons.js'
+import type { PageName } from '@/types.ts'
 
 export const LOCAL_STORAGE_KEY = 'app-tracker'
-
-type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activity'
@@ -29,7 +28,12 @@ export const NAV_ITEMS: NavItem[] = [
   }
 ]
 
-type ButtonType = typeof BUTTON_TYPE_PRIMARY | typeof BUTTON_TYPE_DANGER | typeof BUTTON_TYPE_NEUTRAL | typeof BUTTON_TYPE_SUCCESS | typeof BUTTON_TYPE_WARNING
+type ButtonType =
+  | typeof BUTTON_TYPE_PRIMARY
+  | typeof BUTTON_TYPE_DANGER
+  | typeof BUTTON_TYPE_NEUTRAL
+  | typeof BUTTON_TYPE_SUCCESS
+  | typeof BUTTON_TYPE_WARNING
 
 export const BUTTON_TYPE_PRIMARY = 'primary'
 export const BUTTON_TYPE_DANGER = 'danger'

@@ -1,20 +1,12 @@
 import { computed, ref } from 'vue'
 import { HUNDRED_PERCENT } from '@/constans.ts'
-
-interface Activity {
-  id: string
-  name: string
-  secondsToComplete: number
-}
-
-interface ActivitySelectOption {
-  value: string
-  label: string
-}
+import type { Activity, ActivitySelectOption } from '@/types.ts'
 
 export const activities = ref<Activity[]>([])
 
-export const activitySelectOptions = computed<ActivitySelectOption[]>(() => generateActivitySelectOptions(activities.value))
+export const activitySelectOptions = computed<ActivitySelectOption[]>(() =>
+  generateActivitySelectOptions(activities.value)
+)
 
 export const trackedActivities = computed<Activity[]>(() =>
   activities.value.filter(({ secondsToComplete }): boolean => secondsToComplete !== 0)
@@ -24,7 +16,10 @@ export function initializeActivities(state: any): void {
   return (activities.value = state.activities || [])
 }
 
-export function calculateActivityComplectionPercentage({ secondsToComplete }: Activity, trackedSeconds: number): number {
+export function calculateActivityComplectionPercentage(
+  { secondsToComplete }: Activity,
+  trackedSeconds: number
+): number {
   return Math.floor((trackedSeconds * HUNDRED_PERCENT) / secondsToComplete)
 }
 

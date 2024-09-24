@@ -7,16 +7,12 @@ import {
   HUNDRED_PERCENT
 } from '@/constans.ts'
 import { isNull } from './validators.js'
+import type { PeriodSelectOption } from '@/types.ts'
 
 enum ProgressColorClass {
   RED = 'bg-red-500',
   YELLOW = 'bg-yellow-500',
   GREEN = 'bg-green-500'
-}
-
-interface PeriodSelectOption {
-  value: number
-  label: string
 }
 
 export function normalizeSelectValue(value: any): any {
@@ -43,10 +39,12 @@ export function formatSeconds(seconds: number): string {
 export function generatePeriodSelectOptions(): PeriodSelectOption[] {
   const periodsInMinutes = Array.from({ length: 32 }, (_, i) => (i + 1) * 15)
 
-  return periodsInMinutes.map((periodsInMinutes): PeriodSelectOption => ({
-    value: periodsInMinutes * SECONDS_IN_MINUTE,
-    label: generatePeriodSelectOptionsLabel(periodsInMinutes)
-  }))
+  return periodsInMinutes.map(
+    (periodsInMinutes): PeriodSelectOption => ({
+      value: periodsInMinutes * SECONDS_IN_MINUTE,
+      label: generatePeriodSelectOptionsLabel(periodsInMinutes)
+    })
+  )
 }
 
 export function getProgressColorClass(percentage: number): ProgressColorClass {

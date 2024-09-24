@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
-import { currentPage, navigate } from '@/router.js'
+import { currentPage, navigate } from '@/router.ts'
 import { isNavItemValid } from '@/validators.js'
 import { PAGE_TIMELINE } from '@/constans.ts'
 import { scrollToCurrentHour } from '@/timeline-items.js'

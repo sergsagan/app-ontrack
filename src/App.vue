@@ -1,7 +1,7 @@
 <script setup>
 import AppHeader from '@/components/AppHeader.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
-import { routes, currentPage } from '@/router.js'
+import { routes, currentPage } from '@/router.ts'
 </script>
 
 <template>

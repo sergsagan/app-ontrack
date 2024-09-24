@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { syncState } from '@/storage.js'
+import { syncState } from '@/storage.ts'
 import { startCurrentDateTimer } from '@/time.js'
 import App from './App.vue'
 
