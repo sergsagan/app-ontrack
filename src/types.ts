@@ -23,3 +23,10 @@ export interface PeriodSelectOption {
   value: number
   label: string
 }
+
+export interface TimelineItem {
+  hour: number
+  activityId: string | null
+  activitySeconds: number
+  isActive: boolean
+}

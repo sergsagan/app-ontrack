@@ -7,7 +7,7 @@ import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.ts'
 import { ICON_TRASH } from '@/icons.js'
 import { isActivityValid } from '@/validators.js'
 import { deleteActivity, updateActivity } from '@/activities.ts'
-import { resetTimelineItemActivities, timelineItems } from '@/timeline-items.js'
+import { resetTimelineItemActivities, timelineItems } from '@/timeline-items.ts'
 
 const props = defineProps({
   activity: {

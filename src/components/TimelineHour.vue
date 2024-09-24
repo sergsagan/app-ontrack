@@ -1,7 +1,7 @@
 <script setup>
 import { isHourValid } from '@/validators.js'
-import { scrollToHour } from '@/timeline-items.js'
-import { now } from '@/time.js'
+import { scrollToHour } from '@/timeline-items.ts'
+import { now } from '@/time.ts'
 import { computed } from 'vue'
 
 const props = defineProps({

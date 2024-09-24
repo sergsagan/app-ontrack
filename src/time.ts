@@ -6,15 +6,15 @@ import {
   SECONDS_IN_HOUR
 } from '@/constans.ts'
 
-export function today() {
+export function today(): Date {
   return new Date()
 }
 
-export function isToday(date) {
+export function isToday(date: Date): boolean {
   return date.toDateString() === today().toDateString()
 }
 
-export function endOfHour(date) {
+export function endOfHour(date: Date): Date {
   const endOfHour = new Date(date)
 
   endOfHour.setTime(endOfHour.getTime() + SECONDS_IN_HOUR * MILLISECONDS_IN_SECOND)
@@ -24,20 +24,20 @@ export function endOfHour(date) {
   return endOfHour
 }
 
-export function toSeconds(milliseconds) {
+export function toSeconds(milliseconds: number): number {
   return Math.round(milliseconds / MILLISECONDS_IN_SECOND)
 }
 
 export function startCurrentDateTimer() {
-  setInterval(() => (now.value = today()), MILLISECONDS_IN_SECOND)
+  setInterval((): void => {now.value = today()}, MILLISECONDS_IN_SECOND)
 }
 
 export const now = ref(today())
 
 export const secondsSinceMidnightInPercentage = computed(
-  () => (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY
+  (): number => (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY
 )
 
-const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
+const midnight = computed((): number => new Date(now.value).setHours(0, 0, 0, 0))
 
-const secondsSinceMidnight = computed(() => (now.value - midnight.value) / MILLISECONDS_IN_SECOND)
+const secondsSinceMidnight = computed((): number => ((now.value as any) - midnight.value) / MILLISECONDS_IN_SECOND)

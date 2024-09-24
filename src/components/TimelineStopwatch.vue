@@ -5,13 +5,13 @@ import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 import { formatSeconds } from '@/function.ts'
 import { isTimelineItemValid } from '@/validators'
-import { now } from '@/time'
+import { now } from '@/time.ts'
 import {
   resetTimelineItemTimer,
   startTimelineItemTimer,
   stopTimelineItemTimer
 } from '@/timeline-item-timer.js'
-import { activeTimelineItem } from '@/timeline-items.js'
+import { activeTimelineItem } from '@/timeline-items.ts'
 
 const props = defineProps({
   timelineItem: {

@@ -4,7 +4,7 @@ import BaseIcon from './BaseIcon.vue'
 import { currentPage, navigate } from '@/router.ts'
 import { isNavItemValid } from '@/validators.js'
 import { PAGE_TIMELINE } from '@/constans.ts'
-import { scrollToCurrentHour } from '@/timeline-items.js'
+import { scrollToCurrentHour } from '@/timeline-items.ts'
 
 const props = defineProps({
   navItem: {

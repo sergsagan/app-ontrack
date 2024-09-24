@@ -4,7 +4,7 @@ import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
 
 import { isTimelineItemValid } from '@/validators.js'
-import { updateTimelineItem } from '@/timeline-items.js'
+import { updateTimelineItem } from '@/timeline-items.ts'
 import { activitySelectOptions } from '@/activities.ts'
 
 const props = defineProps({

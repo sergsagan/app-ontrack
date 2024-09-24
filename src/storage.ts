@@ -1,6 +1,6 @@
 import { LOCAL_STORAGE_KEY } from '@/constans.ts'
-import { today } from '@/time'
-import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/timeline-items'
+import { today } from '@/time.ts'
+import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/timeline-items.ts'
 import { activities, initializeActivities } from '@/activities.ts'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
 import type { State } from '@/types.ts'
