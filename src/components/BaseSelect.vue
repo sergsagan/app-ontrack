@@ -4,8 +4,8 @@ import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { ICON_X_MARK } from '@/icons.js'
 import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '@/validators.js'
-import { BUTTON_TYPE_NEUTRAL } from '@/constans.js'
-import { normalizeSelectValue } from '@/function.js'
+import { BUTTON_TYPE_NEUTRAL } from '@/constans.ts'
+import { normalizeSelectValue } from '@/function.ts'
 
 const props = defineProps({
   selected: [Number, String],
@@ -37,7 +37,7 @@ function select(value) {
       <BaseIcon :name="ICON_X_MARK" />
     </BaseButton>
     <select
-      class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
+      class="w-full truncate rounded bg-gray-100 px-2 py-1 text-2xl"
       @change="select($event.target.value)"
     >
       <option :selected="isNotSelected" disabled>{{ placeholder }}</option>

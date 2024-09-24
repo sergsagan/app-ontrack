@@ -2,12 +2,12 @@
 import ActivityItem from '@/components/ActivityItem.vue'
 import ActivityForm from '@/components/ActivityForm.vue'
 import ActivitiesEmptyState from '@/components/ActivitiesEmptyState.vue'
-import { activities } from '@/activities.js'
+import { activities } from '@/activities.ts'
 </script>
 
 <template>
-  <div class="flex flex-col grow">
-    <ul v-if="activities.length" class="divide-y grow">
+  <div class="flex grow flex-col">
+    <ul v-if="activities.length" class="grow divide-y">
       <ActivityItem v-for="activity in activities" :key="activity.id" :activity="activity" />
     </ul>
     <ActivitiesEmptyState v-else />

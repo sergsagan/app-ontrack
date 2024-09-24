@@ -1,6 +1,6 @@
 <script setup>
 import BaseIcon from './BaseIcon.vue'
-import { HUNDRED_PERCENT, PAGE_PROGRESS } from '@/constans.js'
+import { HUNDRED_PERCENT, PAGE_PROGRESS } from '@/constans.ts'
 import { ICON_CHECK_CIRCLE } from '@/icons.js'
 import { navigate } from '@/router.js'
 import { useTotalProgress } from '@/composables/total-progress.js'

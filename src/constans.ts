@@ -1,11 +1,20 @@
-import { generatePeriodSelectOptions } from '@/function.js'
+import { generatePeriodSelectOptions } from '@/function.ts'
 import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from '@/icons.js'
+
+export const LOCAL_STORAGE_KEY = 'app-tracker'
+
+type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activity'
 export const PAGE_PROGRESS = 'progress'
 
-export const NAV_ITEMS = [
+interface NavItem {
+  page: PageName
+  icon: any
+}
+
+export const NAV_ITEMS: NavItem[] = [
   {
     page: PAGE_TIMELINE,
     icon: ICON_CLOCK
@@ -20,13 +29,15 @@ export const NAV_ITEMS = [
   }
 ]
 
+type ButtonType = typeof BUTTON_TYPE_PRIMARY | typeof BUTTON_TYPE_DANGER | typeof BUTTON_TYPE_NEUTRAL | typeof BUTTON_TYPE_SUCCESS | typeof BUTTON_TYPE_WARNING
+
 export const BUTTON_TYPE_PRIMARY = 'primary'
 export const BUTTON_TYPE_DANGER = 'danger'
 export const BUTTON_TYPE_NEUTRAL = 'neutral'
 export const BUTTON_TYPE_SUCCESS = 'success'
 export const BUTTON_TYPE_WARNING = 'warning'
 
-export const BUTTON_TYPES = [
+export const BUTTON_TYPES: ButtonType[] = [
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_PRIMARY,
@@ -45,5 +56,4 @@ export const RANDOM_HOUR = 36
 export const HUNDRED_PERCENT = 100
 export const LOW_PERCENT = 50
 
-export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
-export const APP_NAME = 'ontrack'
+export const PERIOD_SELECT_OPTIONS: any = generatePeriodSelectOptions()

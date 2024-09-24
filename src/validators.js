@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.js'
+import { BUTTON_TYPES, HOURS_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from '@/constans.ts'
 import { ICONS } from './icons.js'
 
 export function isUndefinedOrNull(value) {

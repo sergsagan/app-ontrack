@@ -3,9 +3,9 @@ import { ref, nextTick } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { ICON_PLUS } from '@/icons.js'
-import { BUTTON_TYPE_PRIMARY } from '@/constans.js'
-import { id } from '@/function.js'
-import { createActivity } from '@/activities.js'
+import { BUTTON_TYPE_PRIMARY } from '@/constans.ts'
+import { id } from '@/function.ts'
+import { createActivity } from '@/activities.ts'
 
 const name = ref('')
 

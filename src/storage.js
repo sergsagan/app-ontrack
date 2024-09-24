@@ -1,7 +1,7 @@
-import { APP_NAME } from '@/constans.js'
+import { LOCAL_STORAGE_KEY } from '@/constans.ts'
 import { today } from '@/time'
 import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/timeline-items'
-import { activities, initializeActivities } from '@/activities'
+import { activities, initializeActivities } from '@/activities.ts'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
 
 export function syncState(shouldLoad = true) {
@@ -22,7 +22,7 @@ function loadState() {
 
 function saveState() {
   localStorage.setItem(
-    APP_NAME,
+    LOCAL_STORAGE_KEY,
     JSON.stringify({
       timelineItems: timelineItems.value,
       activities: activities.value,
@@ -32,5 +32,5 @@ function saveState() {
 }
 
 function loadFromLocalStorage() {
-  return JSON.parse(localStorage.getItem(APP_NAME) ?? '{}')
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}')
 }

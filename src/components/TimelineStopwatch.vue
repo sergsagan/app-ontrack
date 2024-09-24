@@ -1,9 +1,9 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.js'
+import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.ts'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
-import { formatSeconds } from '@/function.js'
+import { formatSeconds } from '@/function.ts'
 import { isTimelineItemValid } from '@/validators'
 import { now } from '@/time'
 import {

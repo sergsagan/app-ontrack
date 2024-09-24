@@ -1,6 +1,6 @@
 <script setup>
 import NavigationItem from '@/components/NavigationItem.vue'
-import { NAV_ITEMS } from '@/constans.js'
+import { NAV_ITEMS } from '@/constans.ts'
 </script>
 
 <template>

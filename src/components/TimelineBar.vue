@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { HUNDRED_PERCENT } from '@/constans.js'
+import { HUNDRED_PERCENT } from '@/constans.ts'
 import { secondsSinceMidnightInPercentage } from '@/time.js'
 
 const barRef = ref()

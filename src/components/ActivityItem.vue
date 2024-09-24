@@ -3,10 +3,10 @@ import BaseSelect from './BaseSelect.vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
-import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.js'
+import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.ts'
 import { ICON_TRASH } from '@/icons.js'
 import { isActivityValid } from '@/validators.js'
-import { deleteActivity, updateActivity } from '@/activities.js'
+import { deleteActivity, updateActivity } from '@/activities.ts'
 import { resetTimelineItemActivities, timelineItems } from '@/timeline-items.js'
 
 const props = defineProps({
