@@ -3,7 +3,7 @@ import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
 
-import { isTimelineItemValid } from '@/validators.js'
+import { isTimelineItemValid } from '@/validators.ts'
 import { updateTimelineItem } from '@/timeline-items.ts'
 import { activitySelectOptions } from '@/activities.ts'
 

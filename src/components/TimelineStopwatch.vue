@@ -4,7 +4,7 @@ import BaseIcon from './BaseIcon.vue'
 import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.ts'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 import { formatSeconds } from '@/function.ts'
-import { isTimelineItemValid } from '@/validators'
+import { isTimelineItemValid } from '@/validators.ts'
 import { now } from '@/time.ts'
 import {
   resetTimelineItemTimer,

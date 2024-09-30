@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { ICON_X_MARK } from '@/icons.js'
-import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '@/validators.js'
+import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '@/validators.ts'
 import { BUTTON_TYPE_NEUTRAL } from '@/constans.ts'
 import { normalizeSelectValue } from '@/function.ts'
 
