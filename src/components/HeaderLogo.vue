@@ -2,7 +2,7 @@
 import { PAGE_TIMELINE } from '@/constans.ts'
 import { currentPage, navigate } from '@/router.ts'
 import { scrollToCurrentHour } from '@/timeline-items.ts'
-import { ICON_CLOCK } from '@/icons.ts'
+import { ICON_CLOCK } from '@/icons.js'
 import BaseIcon from './BaseIcon.vue'
 
 function handleClick() {
