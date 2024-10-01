@@ -1,19 +1,13 @@
 import {
   RANDOM_HOUR,
-  SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
   MILLISECONDS_IN_SECOND,
   LOW_PERCENT,
-  HUNDRED_PERCENT
+  HUNDRED_PERCENT,
+  SECONDS_IN_MINUTE
 } from '@/constans.ts'
 import { isNull } from './validators.js'
-import type { PeriodSelectOption } from '@/types.ts'
-
-enum ProgressColorClass {
-  RED = 'bg-red-500',
-  YELLOW = 'bg-yellow-500',
-  GREEN = 'bg-green-500'
-}
+import { type SelectOption, ProgressColorClass } from '@/types.ts'
 
 export function normalizeSelectValue(value: any): any {
   return isNull(value) || isNaN(value) ? value : +value
@@ -36,11 +30,11 @@ export function formatSeconds(seconds: number): string {
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
-export function generatePeriodSelectOptions(): PeriodSelectOption[] {
+export function generatePeriodSelectOptions(): SelectOption<number>[] {
   const periodsInMinutes = Array.from({ length: 32 }, (_, i) => (i + 1) * 15)
 
   return periodsInMinutes.map(
-    (periodsInMinutes): PeriodSelectOption => ({
+    (periodsInMinutes): SelectOption<number> => ({
       value: periodsInMinutes * SECONDS_IN_MINUTE,
       label: generatePeriodSelectOptionsLabel(periodsInMinutes)
     })

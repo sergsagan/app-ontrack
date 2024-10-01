@@ -2,7 +2,7 @@
 import { ref, nextTick } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { ICON_PLUS } from '@/icons.js'
+import { ICON_PLUS } from '@/icons.ts'
 import { BUTTON_TYPE_PRIMARY } from '@/constans.ts'
 import { id } from '@/function.ts'
 import { createActivity } from '@/activities.ts'

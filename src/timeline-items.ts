@@ -34,7 +34,7 @@ export function initializeTimelineItems(state: State) {
   }
 }
 
-export function updateTimelineItem(timelineItem: TimelineItem, fields: any): TimelineItem {
+export function updateTimelineItem(timelineItem: TimelineItem, fields: Partial<TimelineItem>): TimelineItem {
   return Object.assign(timelineItem, fields)
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ICONS } from '@/icons.js'
+import { ICONS } from '@/icons.ts'
 import { isIconValid, isNotEmptyString } from '@/validators.ts'
 
 defineProps({
