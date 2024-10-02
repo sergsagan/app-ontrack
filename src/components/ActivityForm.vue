@@ -1,15 +1,15 @@
-<script setup>
+<script setup lang="ts">
 import { ref, nextTick } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { ICON_PLUS } from '@/icons.js'
 import { BUTTON_TYPE_PRIMARY } from '@/constans.ts'
 import { id } from '@/function.ts'
 import { createActivity } from '@/activities.ts'
+import { IconName } from '@/types.ts'
 
 const name = ref('')
 
-async function submit() {
+async function submit(): Promise<void> {
   createActivity({
     id: id(),
     name: name.value,
@@ -24,15 +24,21 @@ async function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit" class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4">
+  <form
+    class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4"
+    @submit.prevent="submit"
+  >
     <input
       v-model="name"
       type="text"
       class="w-full rounded border px-4 text-xl"
       placeholder="Activity name"
-    />
-    <BaseButton :type="BUTTON_TYPE_PRIMARY" :disabled="name.trim() === ''">
-      <BaseIcon :name="ICON_PLUS" />
+    >
+    <BaseButton
+      :type="BUTTON_TYPE_PRIMARY"
+      :disabled="name.trim() === ''"
+    >
+      <BaseIcon :name="IconName.PLUS" />
     </BaseButton>
   </form>
 </template>

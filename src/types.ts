@@ -1,10 +1,24 @@
 import {
+  BUTTON_TYPE_DANGER,
+  BUTTON_TYPE_NEUTRAL,
+  BUTTON_TYPE_PRIMARY,
+  BUTTON_TYPE_SUCCESS,
+  BUTTON_TYPE_WARNING,
   PAGE_ACTIVITIES,
   PAGE_PROGRESS,
   PAGE_TIMELINE
 } from '@/constans.ts'
 
 export type PageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
+
+export type Hour = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23
+
+export type ButtonType =
+  | typeof BUTTON_TYPE_PRIMARY
+  | typeof BUTTON_TYPE_SUCCESS
+  | typeof BUTTON_TYPE_WARNING
+  | typeof BUTTON_TYPE_NEUTRAL
+  | typeof BUTTON_TYPE_DANGER
 
 export interface Activity {
   id: string
@@ -24,7 +38,7 @@ export interface State {
 }
 
 export interface TimelineItem {
-  hour: number
+  hour: Hour
   activityId: Activity['id'] | null
   activitySeconds: number
   isActive: boolean
@@ -32,7 +46,7 @@ export interface TimelineItem {
 
 export interface NavItem {
   page: PageName
-  icon: string
+  icon: IconName
 }
 
 export enum ProgressColorClass {
@@ -52,12 +66,4 @@ export enum IconName {
   PAUSE = 'Pause',
   PLAY = 'Play',
   PLUS = 'Plus'
-}
-
-export enum ButtonType {
-  PRIMARY = 'primary',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  NEUTRAL = 'neutral',
-  DANGER = 'danger'
 }

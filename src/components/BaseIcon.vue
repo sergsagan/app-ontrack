@@ -1,21 +1,13 @@
-<script setup>
-import { ICONS } from '@/icons.js'
-import { isIconValid, isNotEmptyString } from '@/validators.ts'
+<script setup lang="ts">
+import { ICONS } from '@/icons.ts'
+import type { IconName } from '@/types.ts'
 
-defineProps({
-  name: {
-    type: String,
-    required: true,
-    validator: isIconValid
-  },
-  classes: {
-    type: String,
-    default: 'h-8',
-    validator: isNotEmptyString
-  }
-})
+defineProps<{ name: IconName }>()
 </script>
 
 <template>
-  <component :is="ICONS[name]" :class="classes" />
+  <component
+    :is="ICONS[name]"
+    :class="$attrs.class || 'h-8'"
+  />
 </template>

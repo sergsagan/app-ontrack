@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onActivated } from 'vue'
 import TimelineItem from '@/components/TimelineItem.vue'
 import TimelineBar from '@/components/TimelineBar.vue'
@@ -14,8 +14,8 @@ onActivated(scrollToCurrentHour)
       <TimelineItem
         v-for="timelineItem in timelineItems"
         :key="timelineItem.hour"
-        :timeline-item="timelineItem"
         ref="timelineItemRefs"
+        :timeline-item="timelineItem"
       />
     </ul>
   </div>

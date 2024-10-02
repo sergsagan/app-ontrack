@@ -1,30 +1,23 @@
-<script setup>
+<script setup lang="ts">
 import BaseSelect from './BaseSelect.vue'
 import TimelineHour from './TimelineHour.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
-
-import { isTimelineItemValid } from '@/validators.ts'
 import { updateTimelineItem } from '@/timeline-items.ts'
 import { activitySelectOptions } from '@/activities.ts'
+import type { TimelineItem } from '@/types.ts'
 
-const props = defineProps({
-  timelineItem: {
-    type: Object,
-    required: true,
-    validator: isTimelineItemValid
-  }
-})
+defineProps<{ timelineItem: TimelineItem }>()
 </script>
 
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 px-4 py-10">
-    <TimelineHour :hour="props.timelineItem.hour" />
+    <TimelineHour :hour="timelineItem.hour" />
     <BaseSelect
-      :selected="props.timelineItem.activityId"
+      :selected="timelineItem.activityId"
       :options="activitySelectOptions"
-      @select="updateTimelineItem(props.timelineItem, { activityId: $event })"
       placeholder="Rest"
+      @select="updateTimelineItem(timelineItem, { activityId: $event })"
     />
-    <TimelineStopwatch :timeline-item="props.timelineItem" />
+    <TimelineStopwatch :timeline-item="timelineItem" />
   </li>
 </template>

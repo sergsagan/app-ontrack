@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
 import AppNavigation from '@/components/AppNavigation.vue'
 import { routes, currentPage } from '@/router.ts'

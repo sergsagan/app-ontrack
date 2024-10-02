@@ -7,7 +7,9 @@ import type { ProgressColorClass } from '@/types.ts'
 export function useTotalProgress() {
   const colorClass = computed((): ProgressColorClass => getProgressColorClass(percentage.value))
 
-  const percentage = computed((): number => calculateComplectionPercentage(totalTrackedSeconds.value))
+  const percentage = computed((): number =>
+    calculateComplectionPercentage(totalTrackedSeconds.value)
+  )
 
   const totalTrackedSeconds = computed((): number => {
     return trackedActivities.value

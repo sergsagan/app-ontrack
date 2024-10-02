@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import HeaderLogo from './HeaderLogo.vue'
 import HeaderProgress from './HeaderProgress.vue'
 </script>
