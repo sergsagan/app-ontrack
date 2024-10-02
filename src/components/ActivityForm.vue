@@ -2,10 +2,9 @@
 import { ref, nextTick } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { BUTTON_TYPE_PRIMARY } from '@/constans.ts'
 import { id } from '@/function.ts'
 import { createActivity } from '@/activities.ts'
-import { IconName } from '@/types.ts'
+import { ButtonType, IconName } from '@/types.ts'
 
 const name = ref('')
 
@@ -35,7 +34,7 @@ async function submit(): Promise<void> {
       placeholder="Activity name"
     >
     <BaseButton
-      :type="BUTTON_TYPE_PRIMARY"
+      :type="ButtonType.PRIMARY"
       :disabled="name.trim() === ''"
     >
       <BaseIcon :name="IconName.PLUS" />
