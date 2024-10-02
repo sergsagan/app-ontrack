@@ -4,7 +4,7 @@
       class="h-48"
       src="@/assets/img/no_activities.svg"
       alt="No activities"
-    />
+    >
     <span class="text-gray-400">You don't have any activities</span>
   </div>
 </template>

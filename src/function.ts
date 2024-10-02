@@ -6,11 +6,10 @@ import {
   HUNDRED_PERCENT,
   SECONDS_IN_MINUTE
 } from '@/constans.ts'
-import { isNull } from './validators.js'
 import { type SelectOption, ProgressColorClass } from '@/types.ts'
 
 export function normalizeSelectValue(value: any): any {
-  return isNull(value) || isNaN(value) ? value : +value
+  return value === null || isNaN(value) ? value : +value
 }
 
 export function id(): string {

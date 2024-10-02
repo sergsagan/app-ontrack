@@ -3,10 +3,10 @@ import BaseSelect from './BaseSelect.vue'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
-import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '@/constans.ts'
+import { PERIOD_SELECT_OPTIONS } from '@/constans.ts'
 import { deleteActivity, updateActivity } from '@/activities.ts'
 import { resetTimelineItemActivities, timelineItems } from '@/timeline-items.ts'
-import { IconName, type Activity } from '@/types.ts'
+import { IconName, type Activity, ButtonType } from '@/types.ts'
 
 defineProps<{ activity: Activity }>()
 
@@ -20,7 +20,7 @@ function deleteAndResetActivity(activity: Activity): void {
   <li class="flex flex-col gap-2 p-4">
     <div class="flex items-center gap-2">
       <BaseButton
-        :type="BUTTON_TYPE_DANGER"
+        :type="ButtonType.DANGER"
         @click="deleteAndResetActivity(activity)"
       >
         <BaseIcon

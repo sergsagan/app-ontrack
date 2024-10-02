@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER } from '@/constans.ts'
 import { formatSeconds } from '@/function.ts'
 import { now } from '@/time.ts'
 import { resetTimelineItemTimer, startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.ts'
 import { activeTimelineItem } from '@/timeline-items.ts'
-import { IconName, type TimelineItem } from '@/types.ts'
+import { ButtonType, IconName, type TimelineItem } from '@/types.ts'
 
 defineProps<{ timelineItem: TimelineItem }>()
 </script>
@@ -14,7 +13,7 @@ defineProps<{ timelineItem: TimelineItem }>()
 <template>
   <div class="flex w-full gap-2">
     <BaseButton
-      :type="BUTTON_TYPE_DANGER"
+      :type="ButtonType.DANGER"
       :disabled="!timelineItem.activitySeconds"
       @click="resetTimelineItemTimer(timelineItem)"
     >
@@ -25,14 +24,14 @@ defineProps<{ timelineItem: TimelineItem }>()
     </div>
     <BaseButton
       v-if="timelineItem === activeTimelineItem"
-      :type="BUTTON_TYPE_WARNING"
+      :type="ButtonType.WARNING"
       @click="stopTimelineItemTimer"
     >
       <BaseIcon :name="IconName.PAUSE" />
     </BaseButton>
     <BaseButton
       v-else
-      :type="BUTTON_TYPE_SUCCESS"
+      :type="ButtonType.SUCCESS"
       :disabled="timelineItem.hour !== now.getHours()"
       @click="startTimelineItemTimer(timelineItem)"
     >

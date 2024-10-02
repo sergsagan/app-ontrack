@@ -2,9 +2,8 @@
 import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 import { currentPage, navigate } from '@/router.ts'
-import { PAGE_TIMELINE } from '@/constans.ts'
 import { scrollToCurrentHour } from '@/timeline-items.ts'
-import type { NavItem } from '@/types.ts'
+import { type NavItem, PageName } from '@/types.ts'
 
 const props = defineProps<{ navItem: NavItem}>()
 
@@ -15,7 +14,7 @@ const classes = computed((): string[] => [
 
 function handleClick(): void {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  currentPage.value === PAGE_TIMELINE && props.navItem.page === PAGE_TIMELINE
+  currentPage.value === PageName.TIMELINE && props.navItem.page === PageName.TIMELINE
     ? scrollToCurrentHour(true)
     : navigate(props.navItem.page)
 }

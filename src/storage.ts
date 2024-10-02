@@ -6,9 +6,11 @@ import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-t
 import type { State } from '@/types.ts'
 
 export function syncState(shouldLoad = true) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   shouldLoad ? loadState() : saveState()
 
   if (activeTimelineItem.value) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     shouldLoad ? startTimelineItemTimer() : stopTimelineItemTimer()
   }
 }

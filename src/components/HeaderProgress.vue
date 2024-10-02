@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import BaseIcon from './BaseIcon.vue'
-import { HUNDRED_PERCENT, PAGE_PROGRESS } from '@/constans.ts'
+import { HUNDRED_PERCENT } from '@/constans.ts'
 import { navigate } from '@/router.ts'
 import { useTotalProgress } from '@/composables/total-progress.ts'
-import { IconName } from '@/types.ts'
+import { IconName, PageName } from '@/types.ts'
 
 const { colorClass, percentage } = useTotalProgress()
 </script>
 
 <template>
   <a
-    :href="`#${PAGE_PROGRESS}`"
+    :href="`#${PageName.PROGRESS}`"
     class="text-sm"
-    @click="navigate(PAGE_PROGRESS)"
+    @click="navigate(PageName.PROGRESS)"
   >
     <div
       v-if="percentage < HUNDRED_PERCENT"
@@ -21,7 +21,7 @@ const { colorClass, percentage } = useTotalProgress()
       <div>
         Progress: <span class="font-mono">{{ percentage }}%</span>
       </div>
-      <div :class="`h-3 w-3 rounded-full ${colorClass}`"></div>
+      <div :class="`h-3 w-3 rounded-full ${colorClass}`" />
     </div>
     <div
       v-else
