@@ -8,8 +8,8 @@ import {
 } from '@/constans.ts'
 import { type SelectOption, ProgressColorClass } from '@/types.ts'
 
-export function normalizeSelectValue(value: any): any {
-  return value === null || isNaN(value) ? value : +value
+export function normalizeSelectValue(value: string | null): number | string | null {
+  return value === null || isNaN(Number(value)) ? value : +value
 }
 
 export function id(): string {

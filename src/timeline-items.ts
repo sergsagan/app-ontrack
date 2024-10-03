@@ -93,16 +93,18 @@ function generateTimelineItems(): TimelineItem[] {
 }
 
 function syncIdleSeconds(lastActiveAt: Date) {
-  updateTimelineItem(activeTimelineItem.value as any, {
+  if (!activeTimelineItem.value) return
+
+  updateTimelineItem(activeTimelineItem.value, {
     activitySeconds:
-      (activeTimelineItem.value as any).activitySeconds + calculateIdleSeconds(lastActiveAt)
+      activeTimelineItem.value.activitySeconds + calculateIdleSeconds(lastActiveAt)
   })
 }
 
 function calculateIdleSeconds(lastActiveAt: Date) {
   return lastActiveAt.getHours() === today().getHours()
-    ? toSeconds((today() as any) - (lastActiveAt as any))
-    : toSeconds((endOfHour(lastActiveAt) as any) - (lastActiveAt as any))
+    ? toSeconds(today().getTime() - lastActiveAt.getTime())
+    : toSeconds(endOfHour(lastActiveAt).getTime() - lastActiveAt.getTime())
 }
 
 function resetTimelineItems() {
