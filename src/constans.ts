@@ -1,5 +1,5 @@
 import { generatePeriodSelectOptions } from '@/function.ts'
-import { ButtonType, IconName, type NavItem, PageName } from '@/types.ts'
+import { IconName, type NavItem, PageName } from '@/types.ts'
 
 export const LOCAL_STORAGE_KEY = 'app-tracker'
 
@@ -16,14 +16,6 @@ export const NAV_ITEMS: NavItem[] = [
     page: PageName.PROGRESS,
     icon: IconName.CHART_BAR
   }
-]
-
-export const BUTTON_TYPES: ButtonType[] = [
-  ButtonType.DANGER,
-  ButtonType.NEUTRAL,
-  ButtonType.PRIMARY,
-  ButtonType.SUCCESS,
-  ButtonType.WARNING
 ]
 
 export const MILLISECONDS_IN_SECOND = 1000
